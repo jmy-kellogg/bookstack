@@ -6,18 +6,18 @@ var Sequelize = require('sequelize');
 var db = require('../_db');
 
 module.exports = db.define('author', {
-    FirstName: {
+    first_name: {
         type: Sequelize.STRING,
         allowNull: false;
     },
-    LastName: {
+    last_name: {
         type: Sequelize.STRING,
         allowNull: false;
     },
-    MiddleInitial: {
+    middle_initial: {
         type: Sequelize.STRING
     },
-    PictureUrl: {
+    picture_url: {
         type: Sequelize.STRING
     }
 });
