@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 
 var db = require('../_db');
 
-module.exports = db.define('user', {
+module.exports = db.define('book', {
     title: {
         type: Sequelize.STRING
     },
@@ -15,6 +15,6 @@ module.exports = db.define('user', {
         type: Sequelize.STRING
     },
     bookScore: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
     }
 });
