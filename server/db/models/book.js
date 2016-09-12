@@ -8,13 +8,13 @@ module.exports = db.define('book', {
     title: {
         type: Sequelize.STRING
     },
-    coverUrl: {
+    cover_url: {
         type: Sequelize.STRING
     },
     genre: {
         type: Sequelize.STRING
     },
-    bookScore: {
+    book_score: {
         type: Sequelize.INTEGER
     }
 });
