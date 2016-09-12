@@ -7,4 +7,5 @@ var User = require('./models/user');
 var Author = require('./models/author');
 var Address = require('./models/address');
 var Books = require('./models/book');
+var Invoices = require('./models/invoice');
 
