@@ -12,8 +12,8 @@ var Review = require('../../db').model('review');
 router.get('/all', function(req, res, next) {
 	// route to get all books (meant to be fodder for searching and search result page)
 	Book.findAll({
-		include: [Author, Book_Type],
-		order: ['book_score', 'DESC']
+		include: [Author],
+		order: [['book_score', 'DESC']]
 	})
 	.then(function(books) {
 		res.json(books);
@@ -25,9 +25,9 @@ router.get('/single/:bookId', function(req, res, next) {
 	//route to get all info for a single book by book id, meant for single book state
 	Book.findOne({
 		where: {
-			id: req.params.id
+			id: req.params.bookId
 		},
-		include: [Author, Publisher, Book_Type, Collection, Review]
+		include: [Author, Publisher, Collection]
 	})
 	.then(function(book) {
 		res.json(book);
