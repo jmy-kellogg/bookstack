@@ -12,7 +12,8 @@ app.directive('navbar', function ($rootScope, $state) {
                 { label: 'Bookshelf', state: 'bookshelf' },
                 { label: 'Checkout', state: 'checkout' },
                 { label: 'Search', state: 'search' }, 
-                 { label: 'Sign Up', state: 'signup' }
+                { label: 'Sign Up', state: 'signup' },
+                { label: 'Admin', state: 'admin' }
             ];
 
             scope.user = null;
