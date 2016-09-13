@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 
 var db = require('../_db');
 
-module.exports = db.define('author', {
+module.exports = db.define('invoice', {
     total: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false
@@ -14,6 +14,6 @@ module.exports = db.define('author', {
         allowNull: false
     },
     comment: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     }
 });
