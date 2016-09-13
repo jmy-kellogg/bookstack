@@ -9,7 +9,7 @@ module.exports = db.define('book_type', {
         type: Sequelize.ENUM('ebook', 'paperback', 'hardcover', 'leatherbound')
     },
     price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.DECIMAL(10, 2)
     },
     quantity: {
         type: Sequelize.INTEGER
