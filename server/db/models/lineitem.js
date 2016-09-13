@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 
 var db = require('../_db');
 
-module.exports = db.define('lineitem', {
+module.exports = db.define('line_item', {
     status: {
         type: Sequelize.ENUM('viewed', 'cart', 'purchased', 'returned')
     },
