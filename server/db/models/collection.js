@@ -9,7 +9,7 @@ module.exports = db.define('collection', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    total_books{
+    total_books: {
         type: Sequelize.INTEGER
     }
 });
