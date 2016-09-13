@@ -8,11 +8,11 @@ var db = require('../_db');
 module.exports = db.define('author', {
     first_name: {
         type: Sequelize.STRING,
-        allowNull: false;
+        allowNull: false
     },
     last_name: {
         type: Sequelize.STRING,
-        allowNull: false;
+        allowNull: false
     },
     middle_initial: {
         type: Sequelize.STRING

@@ -6,6 +6,6 @@ var db = require('../_db');
 
 module.exports = db.define('book_collection', {
     place_in_series: {
-    	type: Sequelize.INTERGER
+    	type: Sequelize.INTEGER
     }
 });
