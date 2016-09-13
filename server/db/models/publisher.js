@@ -6,6 +6,7 @@ var db = require('../_db');
 
 module.exports = db.define('publisher', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
