@@ -1,0 +1,60 @@
+<div>	
+	<navbar></navbar>
+	<div class="col-md-12">
+		<div class="admin-menu-title">Select an administrator action:</div>
+		<div class="dropdown admin-menu">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Edit content
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li class="dropdown-header">Books</li>
+		    <li><a ui-sref="admin.addBook">&nbsp;&nbsp;  Add</a></li>
+		    <li><a ui-sref="admin.editBook">&nbsp;&nbsp;  Edit</a></li>
+		    <li><a ui-sref="admin.removeBook">&nbsp;&nbsp;  Remove</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li class="dropdown-header">Authors</li>
+		    <li><a href="#">&nbsp;&nbsp;  Add</a></li>
+		    <li><a href="#">&nbsp;&nbsp;  Edit</a></li>
+		    <li><a href="#">&nbsp;&nbsp;  Remove</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li class="dropdown-header">Publishers</li>
+		    <li><a href="#">&nbsp;&nbsp;  Add</a></li>
+		    <li><a href="#">&nbsp;&nbsp;  Edit</a></li>
+		    <li><a href="#">&nbsp;&nbsp;  Remove</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li class="dropdown-header">Collections</li>
+		    <li><a href="#">&nbsp;&nbsp;  Add</a></li>
+		    <li><a href="#">&nbsp;&nbsp;  Edit</a></li>
+		    <li><a href="#">&nbsp;&nbsp;  Remove</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown admin-menu">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Manage users
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">Books</a></li>
+		    <li><a href="#">Authors</a></li>
+		    <li><a href="#">Publishers</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Collections</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown admin-menu">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Analytics
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">Books</a></li>
+		    <li><a href="#">Authors</a></li>
+		    <li><a href="#">Publishers</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Collections</a></li>
+		  </ul>
+		</div>
+		<ui-view></ui-view>
+	</div>
+</div>

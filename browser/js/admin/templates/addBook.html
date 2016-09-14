@@ -1,0 +1,49 @@
+<div>
+	<form name="addBookForm" novalidate>
+		<h1>Add a book</h1>
+		<label class="admin-menu-title">Book:</label>
+		<br>
+		<label>Title:</label>
+		<input type="text" name="" ng-model="book.title">
+		<br>
+		<label>Genre:</label>
+		<input type="text" name="" ng-model="book.genre">
+		<br>
+		<label>Cover image url:</label>
+		<input type="text" name="" ng-model="book.cover_url">
+		<br>
+		<br>
+		<label class="admin-menu-title">Author:</label>
+		<br>
+		<div>
+			<ul>
+				<li ng-repeat="author in authors">{{author.first_name}}&nbsp;{{author.middle_initial}}&nbsp;{{author.last_name}}</li>
+			</ul>
+		</div>
+		<br>
+		<label>First:</label>
+		<input type="text" name="" ng-model="author.first_name">
+		<label>Middle:</label>
+		<input type="text" name="" ng-model="author.middle_initial">
+		<label>Last:</label>
+		<input type="text" name="" ng-model="author.last_name">
+		<br>
+		<label>Image url:</label>
+		<input type="text" name="" ng-model="author.picture_url">
+		<br>
+		<button ng-click="addAuthor()">Add author</button>
+		<br>
+		<br>
+		<label class="admin-menu-title">Publisher:</label>
+		<br>
+		<label>Name:</label>
+		<input type="text" name="" ng-model="publisher.name">
+		<br>
+		<br>
+		<button ng-click="addBook()">Add book</button>
+		<button ng-click="resetForm()">Reset</button>
+	</form>
+</div>
+<div>
+	
+</div>

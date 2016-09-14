@@ -74,7 +74,7 @@ router.post('/book', function(req, res, next) {
 router.put('/edit/:bookId', function(req, res, next) {
 	// edit book info
 	var bookInfo = req.body.book;
-	
+
 	Book.findById(req.params.bookId)
 	.then(function(book) {
 		Object.assign(book, bookInfo);
