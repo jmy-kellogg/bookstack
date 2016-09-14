@@ -16,6 +16,7 @@ var User_Address = require('./models/user_address'); //will be join table betwee
 var Collection = require('./models/collection');
 var Book_Collection = require('./models/book_collection');
 var PaymentMethod = require('./models/payment_method');
+var User_Payment = require('./models/user_payment');
 
 
 
@@ -23,7 +24,7 @@ var PaymentMethod = require('./models/payment_method');
 // e.g. User.hasMany(Reports)
 
 User.belongsToMany(Address, {through: User_Address});
-User.belongsToMany(PaymentMethod, {through: 'user_payment'});
+User.belongsToMany(PaymentMethod, {through: User_Payment});
 User.belongsToMany(Book_Type, {through: Line_Item});
 User.belongsToMany(Book, {through: Review});
 Book.belongsToMany(Author, {through: 'book_author'});
@@ -31,5 +32,6 @@ Book.belongsToMany(Collection, {through: Book_Collection});
 Book.belongsTo(Publisher);
 Book_Type.belongsTo(Book);
 Line_Item.belongsTo(Invoice);
-Invoice.belongsTo(User);
-Invoice.belongsTo(PaymentMethod);
+// Invoice.belongsTo(User);
+// Invoice.belongsTo(PaymentMethod);
+Invoice.belongsTo(User_Payment);
