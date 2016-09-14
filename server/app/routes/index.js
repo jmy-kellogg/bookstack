@@ -4,6 +4,7 @@ module.exports = router;
 
 router.use('/authors', require('./authorRouter.js'));
 router.use('/publishers', require('./publisherRouter.js'));
+router.use('/collections', require('./collectionRouter.js'));
 router.use('/books', require('./bookRouter.js'));
 
 // Make sure this is after all of

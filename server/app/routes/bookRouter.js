@@ -71,11 +71,11 @@ router.post('/book', function(req, res, next) {
 
 });
 
-router.put('/book', function(req, res, next) {
+router.put('/edit/:bookId', function(req, res, next) {
 	// edit book info
 	var bookInfo = req.body.book;
 	
-	Book.findById(bookInfo.id)
+	Book.findById(req.params.bookId)
 	.then(function(book) {
 		Object.assign(book, bookInfo);
 		return book.save();
@@ -136,7 +136,7 @@ router.delete('/book/:bookId/removeAuthor/:authorId', function(req, res, next) {
 	.catch(next);
 });
 
-router.delete('/book/:bookId', function(req, res, next) {
+router.delete('/:bookId', function(req, res, next) {
 	//delete book
 
 	Book.findById(req.params.bookId)
