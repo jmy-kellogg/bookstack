@@ -1,5 +1,11 @@
 <div>
 	<navbar search-box-result="result"></navbar>
+	<filter></filter>
+	<div id="searchResults">
 	<h1>This is the search!</h1>
 	  <h2>Searching: {{searchTerm}}<h3>
+	  <div ng-repeat= "book in books">
+	  	{{ book.title }}
+	  </div>
+	  </div>
 </div>
