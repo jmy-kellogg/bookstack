@@ -209,7 +209,7 @@ var seedCollections = function () {
         { "name": "Totes Mcgotes Series", "total_books": 4},
         { "name": "Serious series", "total_books": 2},
         { "name": "Series in the cool", "total_books": 6},
-        { "name": "My favorite series", "total_books": 5}
+        { "name": "Harry Potter Series", "total_books": 5}
     ]
     return Promise.all( collections.map(function (collectionObj) {
         return Collection.create(collectionObj);
@@ -263,7 +263,8 @@ var seedBooks = function () {
         {"title": "Montes, Nascetur Ridiculus Mus. Donec", "genre": "Horror", "book_score": "49"},
         {"title": "Sem ut Dolor Dapibus Gravida", "genre": "Tragedy", "book_score": "50"},
         {"title": "Phasellus elit pede, malesuada vel, venenatis vel", "genre": "Comedy", "book_score": "55"},
-        {"title": "Tortor: Integer Aliquam Adipiscing Lacus. Ut nec", "genre": "Satire", "book_score": "44"}
+        {"title": "Tortor: Integer Aliquam Adipiscing Lacus. Ut nec", "genre": "Satire", "book_score": "44"},
+        {"title": "Harry Potter and the Chamber of Secrets", "genre": "Fiction", "book_score": "75", cover_url:"https://images-na.ssl-images-amazon.com/images/I/51jNORv6nQL.jpg"}
     ]
 
 
@@ -402,7 +403,11 @@ db.sync({ force: true })
                 if(Math.random()>.5) return true
             })
             .map((book,idx) => {
-            book.addCollection(getRandom(collections), {place_in_series:getRandom([1,2,3])})
+                if(book.title.split(' ').includes('Harry')){
+                    let potterCollection = collections.filter(col => col.name.split(' ').includes('Harry'))[0]
+                    return book.addCollection(potterCollection, {place_in_series:getRandom([1,2,3])})
+                }
+                return book.addCollection(getRandom(collections), {place_in_series:getRandom([1,2,3])})
         } ) )
     })
     .then(function(){
