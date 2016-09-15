@@ -12,7 +12,7 @@ var Review = require('../../db').model('review');
 router.get('/all', function(req, res, next) {
 	// route to get all books (meant to be fodder for searching and search result page)
 	Book.findAll({
-		include: [Author],
+		include: [Author, Publisher],
 		order: [['book_score', 'DESC']]
 	})
 	.then(function(books) {
@@ -102,14 +102,14 @@ router.put('/book/:bookId/changePublisher/:publisherId', function(req, res, next
 	.catch(next);
 });
 
-router.post('/book/:bookId/addAuthor', function(req, res, next) {
+router.post('/book/:bookId/addAuthor/:authorId', function(req, res, next) {
 	// add author to book
 	var authorInfo = req.body.author;
 
 	Book.findById(req.params.bookId)
 	.then(function(book) {
-		return Author.findOrCreate({where: authorInfo})
-			.spread(function(author) {
+		return Author.findById(req.params.authorId)
+			.then(function(author) {
 				return book.addAuthor(author);
 			});
 	})

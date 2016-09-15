@@ -25,9 +25,24 @@ app.factory('AuthorFactory', function($http, $log){
 	};
 
 	authorObj.deleteAuthor = function(authorId){
+		//console.log(authorId)
 		return $http.delete('/api/authors/' + authorId)
 			.then(getData)
 			.catch($log);
+	};
+
+	authorObj.formatName = function(author){
+		var name = [];
+		if (author.first_name) {
+			name.push(author.first_name);
+		}
+		if (author.middle_initial) {
+			name.push(author.middle_initial);
+		}
+		if (author.last_name) {
+			name.push(author.last_name);
+		}
+		return name.join(' ');
 	};
 
 	return authorObj;
