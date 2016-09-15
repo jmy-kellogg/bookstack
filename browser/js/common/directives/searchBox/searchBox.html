@@ -1,0 +1,9 @@
+<form name="searchBox" ng-submit="submit()">
+    	<lable for= "search"></lable>
+    <div class="input-group">
+        <input name= "search" type="text" class="form-control" placeholder="Search for Book" ng-model = "text">
+        <span class="input-group-btn">
+    	<button class="btn" type="submit" ui-sref="search({result: text})"><span class="glyphicon glyphicon-search" ></span></button>
+        </span>
+    </div>
+</form>
