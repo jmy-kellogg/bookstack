@@ -20,4 +20,11 @@ module.exports = db.define('author', {
     picture_url: {
         type: Sequelize.STRING
     }
+},
+{
+    getterMethods: {
+        full_name: function(){
+            return this.first_name + ' ' + this.last_name
+        }
+    }
 });

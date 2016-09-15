@@ -263,7 +263,8 @@ var seedBooks = function () {
         {"title": "Montes, Nascetur Ridiculus Mus. Donec", "genre": "Horror", "book_score": "49"},
         {"title": "Sem ut Dolor Dapibus Gravida", "genre": "Tragedy", "book_score": "50"},
         {"title": "Phasellus elit pede, malesuada vel, venenatis vel", "genre": "Comedy", "book_score": "55"},
-        {"title": "Tortor: Integer Aliquam Adipiscing Lacus. Ut nec", "genre": "Satire", "book_score": "44"}
+        {"title": "Tortor: Integer Aliquam Adipiscing Lacus. Ut nec", "genre": "Satire", "book_score": "44"},
+        {"title": "Harry Potter and the Chamber of Secrets", "genre": "Fiction", "book_score": "75", cover_url:"https://images-na.ssl-images-amazon.com/images/I/51jNORv6nQL.jpg"}
     ]
 
 
