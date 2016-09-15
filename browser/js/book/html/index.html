@@ -5,6 +5,11 @@
     <h1>{{ book.title }}</h1>
     <h2>by <a ng-repeat="author in book.authors" href="">{{ author.full_name }}</a></h2>
 
+    <div ng-repeat="collection in book.collections">
+    <p> Book {{ collection.book_collection.place_in_series }} of {{ collection.total_books }} in {{ collection.name }}</p>
+
+    </div>
+
     <pre>{{ book | json}}</pre>
 
 </div>
