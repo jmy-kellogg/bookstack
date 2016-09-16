@@ -3,19 +3,15 @@ app.config(function ($stateProvider) {
         url: '/admin',
         templateUrl: '/js/admin/templates/admin.html'
     })
-    .state('admin.addBook', {
-		url: '/addBook',
-		templateUrl: '/js/admin/templates/addBook.html',
-		controller: 'AddBookCtrl'
+    .state('admin.book', {
+		url: '/book',
+		templateUrl: '/js/admin/templates/adminBook.html',
+		controller: 'AdminBookCtrl'
     })
-    .state('admin.editBook', {
-		url: '/editBook',
-		templateUrl: '/js/admin/templates/editBook.html',
-		controller: 'EditBookCtrl'
-    })
-    .state('admin.removeBook', {
-		url: '/removeBook',
-		templateUrl: '/js/admin/templates/removeBook.html'
+    .state('admin.author', {
+		url: '/author',
+		templateUrl: '/js/admin/templates/adminAuthor.html',
+		controller: 'AdminAuthorCtrl'
     });
 
 });

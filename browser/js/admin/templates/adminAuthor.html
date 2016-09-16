@@ -1,0 +1,84 @@
+<div class="edit-block">
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="add">
+		</label>
+		<h3 class="inline">Add an author</h3>
+		<br>
+		<form class="content-edit-form" name="addAuthorForm" novalidate>
+			<label class="admin-menu-title">Author info:</label>
+			<br>
+			<br>
+			<label>First name:</label>
+			<input type="text" name="" ng-model="addAuthor.first_name">
+			<br>
+			<label>Middle initial:</label>
+			<input type="text" name="" ng-model="addAuthor.middle_initial">
+			<br>
+			<label>Last name:</label>
+			<input type="text" name="" ng-model="addAuthor.last_name">
+			<br>
+			<br>
+			<label>Image url:</label>
+			<input type="text" name="" ng-model="addAuthor.picture_url">
+			<br>
+			<button ng-disabled="action!=='add'" ng-click="add()">Add author</button>
+			<button ng-disabled="action!=='add'" ng-click="clearAdd()">Clear</button>
+			<br>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="edit">
+		</label>
+		<h3 class="inline">Edit an author</h3>
+		<br>
+		<form class="content-edit-form" name="editAuthorForm" novalidate>
+			<input type="text" ng-model="selectedAuthorEdit" uib-typeahead="authorOption as authorOption.fullName for authorOption in allAuthors | filter:$viewValue | limitTo:8" placeholder="Select an author">
+			<button ng-disabled="action!=='edit'" ng-click="selectAuthorEdit()">Select</button>
+			<button ng-disabled="action!=='edit'" ng-click="resetEditForm()">Reset</button>
+			<br>
+			<br>
+			<label class="admin-menu-title">Author info:</label>
+			<br>
+			<br>
+			<label>First name:</label>
+			<input type="text" name="" ng-model="editAuthor.first_name">
+			<br>
+			<label>Middle initial:</label>
+			<input type="text" name="" ng-model="editAuthor.middle_initial">
+			<br>
+			<label>Last name:</label>
+			<input type="text" name="" ng-model="editAuthor.last_name">
+			<br>
+			<br>
+			<label>Image url:</label>
+			<input type="text" name="" ng-model="editAuthor.picture_url">
+			<br>
+			<button ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
+			<br>
+			<p ng-show="needAuthorForEdit">You must select an author to edit</p>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="delete">
+		</label>
+		<h3 class="inline">Delete an author</h3>
+		<br>
+		<form class="content-edit-form" name="deleteAuthorForm" novalidate>
+			<input type="text" ng-model="selectedAuthorDelete" uib-typeahead="authorOption as authorOption.fullName for authorOption in allAuthors | filter:$viewValue | limitTo:8" placeholder="Select an author">
+			<button ng-disabled="action!=='delete'" ng-click="selectAuthorDelete()">Select</button>
+			<button ng-disabled="action!=='delete'" ng-click="resetDeleteForm()">Reset</button>
+			<br>
+			<br>
+			<p>(Author card for {{deleteAuthor.fullName}})</p>
+			<br>
+			<button ng-disabled="action!=='delete'" ng-click="delete()">Delete author</button>
+		</form>
+	</div>
+</div>

@@ -1,26 +1,32 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
+
 body {
-  background: #fdfdfd;
+    background: #fdfdfd;
+}
+
+pre {
+    clear: both;
 }
 
 @mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }
 
-#main {
-  padding-top: 60px;
-  margin: 0 auto;
-}
 
 .navbar{
 	background-color: #e1e1e1;
+}
+
+#main {
+    padding-top: 60px;
+    margin: 0 auto;
 }
 
 
@@ -28,3 +34,4 @@ body {
 @import 'welcome/main.scss';
 @import './sidebar.scss';
 @import './searchResult.scss';
+@import './bookType.scss';

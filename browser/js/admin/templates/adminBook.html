@@ -1,0 +1,135 @@
+<div class="edit-block">
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="add">
+		</label>
+		<h3 class="inline">Add a book</h3>
+		<br>
+		<form ng-controller="AddBookCtrl" class="content-edit-form" name="addBookForm" novalidate>
+			<label class="admin-menu-title">Book:</label>
+			<br>
+			<label>Title:</label>
+			<input type="text" name="" ng-model="book.title">
+			<br>
+			<label>Genre:</label>
+			<input type="text" name="" ng-model="book.genre">
+			<br>
+			<label>Cover image url:</label>
+			<input type="text" name="" ng-model="book.cover_url">
+			<br>
+			<br>
+			<label class="admin-menu-title">Authors:</label>
+			<br>
+			<div>
+				<ul>
+					<li ng-repeat="author in authors">{{author.first_name}}&nbsp;{{author.middle_initial}}&nbsp;{{author.last_name}}</li>
+				</ul>
+			</div>
+			<br>
+			<label>First:</label>
+			<input type="text" name="" ng-model="author.first_name">
+			<label>Middle:</label>
+			<input type="text" name="" ng-model="author.middle_initial">
+			<label>Last:</label>
+			<input type="text" name="" ng-model="author.last_name">
+			<br>
+			<label>Image url:</label>
+			<input type="text" name="" ng-model="author.picture_url">
+			<br>
+			<button ng-disabled="action!=='add'" ng-click="addAuthor()">Add author</button>
+			<br>
+			<br>
+			<label class="admin-menu-title">Publisher:</label>
+			<br>
+			<label>Name:</label>
+			<input type="text" name="" ng-model="publisher.name">
+			<br>
+			<br>
+			<button ng-disabled="action!=='add'" ng-click="addBook()">Add book</button>
+			<button ng-disabled="action!=='add'" ng-click="resetForm()">Reset</button>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="edit">
+		</label>
+		<h3 class="inline">Edit a book</h3>
+		<br>
+		<form ng-controller="EditBookCtrl" class="content-edit-form" name="editBookForm" novalidate>
+			<input autocomplete-recipient type="text" ng-model="selectedBook" uib-typeahead="bookOption as bookOption.title for bookOption in allBooks | filter:$viewValue | limitTo:8" placeholder="Select a book">
+			<button ng-disabled="action!=='edit'" ng-click="selectBook()">Select</button>
+			<button ng-disabled="action!=='edit'" ng-click="resetForm()">Reset</button>
+			<br>
+			<br>
+			<label class="admin-menu-title">Book:</label>
+			<br>
+			<label>Title:</label>
+			<input type="text" name="" ng-model="book.title">
+			<br>
+			<label>Genre:</label>
+			<input type="text" name="" ng-model="book.genre">
+			<br>
+			<label>Cover image url:</label>
+			<input type="text" name="" ng-model="book.cover_url">
+			<br>
+			<button ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
+			<br>
+			<br>
+			<label class="admin-menu-title">Authors:</label>
+			<br>
+			<div>
+				<ul>
+					<li class="list-unstyled" ng-repeat="author in authors">
+						<span>{{formatName(author)}}</span>
+						<button ng-disabled="action!=='edit'" ng-click="removeAuthor(author.id)">Remove author</button>
+					</li>
+				</ul>
+			</div>
+			<input autocomplete-recipient type="text" ng-model="selectedAuthor" uib-typeahead="authorOption as authorOption.fullName for authorOption in allAuthors | filter:$viewValue | limitTo:8" placeholder="Select an author to add">
+			<br>
+			<button ng-disabled="action!=='edit'" ng-click="addAuthor()">Add author</button>
+			<br>
+			<p ng-show="invalidAuthor">Not a recognized author</p>
+			<p ng-show="needBookForAuth">You must select a book to edit</p>
+			<br>
+			<br>
+			<label class="admin-menu-title">Publisher:</label>
+			<br>
+			<div>
+				<ul>
+					<li class="list-unstyled">
+						<span>{{publisher.name}}</span>
+					</li>
+				</ul>
+			</div>
+			<input type="text" ng-model="selectedPublisher" uib-typeahead="publisherOption as publisherOption.name for publisherOption in allPublishers | filter:$viewValue | limitTo:8" placeholder="Select a publisher">
+			<br>
+			<button ng-disabled="action!=='edit'" ng-click="changePublisher()">Change publisher</button>
+			<br>
+			<p ng-show="invalidPublisher">Not a recognized publisher</p>
+			<p ng-show="needBookForPub">You must select a book to edit</p>
+			<br>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="delete">
+		</label>
+		<h3 class="inline">Delete a book</h3>
+		<br>
+		<form ng-controller="DeleteBookCtrl" class="content-edit-form" name="deleteBookForm" novalidate>
+			<input type="text" ng-model="selectedBook" uib-typeahead="bookOption as bookOption.title for bookOption in allBooks | filter:$viewValue | limitTo:8" placeholder="Select a book">
+			<button ng-disabled="action!=='delete'" ng-click="selectBook()">Select</button>
+			<button ng-disabled="action!=='delete'" ng-click="resetForm()">Reset</button>
+			<br>
+			<br>
+			<p>(Book card for {{book.title}})</p>
+			<br>
+			<button ng-disabled="action!=='delete'" ng-click="deleteBook()">Delete book</button>
+		</form>
+	</div>
+</div>
