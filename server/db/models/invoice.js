@@ -17,7 +17,7 @@ module.exports = db.define('invoice', {
 {
     getterMethods: {
         total: function(){
-            return this.total / 100;
+            return (this.total / 100).toFixed(2)
         }
     },
     setterMethods: {

@@ -17,7 +17,7 @@ module.exports = db.define('line_item', {
 }, {
 	getterMethods: {
 		unit_price: function(){
-			return this.unit_price / 100;
+			return (this.unit_price / 100).toFixed(2)
 		}
 	},
 	setterMethods: {
