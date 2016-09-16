@@ -2,29 +2,6 @@
     box-sizing: border-box;
 }
 
-book-type {
-    margin-top: 100px;
-}
-
-.book-type {
-    margin: 10px;
-    padding: 5px;
-    color: darkslategray;
-    display: inline;
-    border-color: darkslategray;
-    border-radius: 15px;
-    border-width: 3px;
-    border-style: solid;
-    background-color: lightgray;
-}
-
-.book-type-list {
-    height: 40px;
-}
-
-.book-info {
-
-}
 
 body {
     background: #fdfdfd;
@@ -42,14 +19,19 @@ pre {
     }
 }
 
+
+.navbar{
+	background-color: #e1e1e1;
+}
+
 #main {
     padding-top: 60px;
     margin: 0 auto;
 }
 
-.navbar {
-    background-color: #e1e1e1;
-}
 
 @import './admin.scss';
 @import 'welcome/main.scss';
+@import './sidebar.scss';
+@import './searchResult.scss';
+@import './bookType.scss';

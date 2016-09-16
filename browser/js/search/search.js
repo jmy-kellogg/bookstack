@@ -5,8 +5,4 @@ app.config(function ($stateProvider) {
         controller: 'SearchCtl'
     });
 })
-app.controller('SearchCtl', function($scope, $stateParams, BookFactory){
-	$scope.searchTerm = $stateParams.result;
 
-
-})
