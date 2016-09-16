@@ -30,8 +30,8 @@ app.factory('BookFactory', function($http, $log){
 			.catch($log);
 	};
 
-	bookObj.addAuthorToBook = function(bookId, author){
-		return $http.post('/api/books/book/' + bookId + '/addAuthor', {author})
+	bookObj.addAuthorToBook = function(bookId, authorId){
+		return $http.post('/api/books/book/' + bookId + '/addAuthor/' + authorId)
 			.then(getData)
 			.catch($log);
 	};
