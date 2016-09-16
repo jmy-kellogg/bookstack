@@ -11,7 +11,10 @@ router.param('collectionId', function(req, res, next, id) {
 		where: {
 			id: id
 		},
-		include: [Book]
+		include: [{
+			model: Book,
+			order: [['place_in_series']]
+		}]
 	})
 	.then(function(collection) {
 		if (collection) {
@@ -28,7 +31,10 @@ router.param('collectionId', function(req, res, next, id) {
 router.get('/', function(req, res, next) {
 	// get all collections
 	Collection.findAll({
-		include: [Book]
+		include: [{
+			model: Book,
+			order: [['place_in_series']]
+		}]
 	})
 	.then(function(collections) {
 		res.json(collections);
@@ -58,7 +64,7 @@ router.post('/:collectionId/book/:bookId', function(req, res, next) {
 
 	Book.findById(req.params.bookId)
 	.then(function(book) {
-		return req.collection.addBook(book);
+		return req.collection.addBook(book, {place_in_series: (req.collection.books.length+1)});
 	})
 	.then(function(data) {
 		res.json(data);

@@ -91,4 +91,11 @@ app.controller('AdminCollectionCtrl', function($scope, CollectionFactory, BookFa
 		});
 	};
 
+	$scope.saveOrder = function(){
+		var bookOrder = $scope.editCollection.books.map(function(book){
+			return book.id;
+		});
+		CollectionFactory.rearrangeCollection($scope.editCollection.id, bookOrder);
+	};
+
 });

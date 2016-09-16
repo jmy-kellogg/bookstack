@@ -47,13 +47,15 @@
 			<label class="admin-menu-title">Books in collection:</label>
 			<br>
 			<div>
-				<ul>
-					<li class="list-unstyled" ng-repeat="book in editCollection.books">
+				<ol dnd-list="editCollection.books">
+					<li ng-repeat="book in editCollection.books" dnd-draggable="book" dnd-moved="editCollection.books.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = book" ng-class="{'selected': models.selected === book}">
 						<span>{{book.title}}</span>
-						<button ng-disabled="action!=='edit'" ng-click="removeBook(book.id)">Remove book</button>
+						<button class="remove-button btn btn-danger btn-xs" ng-disabled="action!=='edit'" ng-click="removeBook(book.id)">x</button>
 					</li>
-				</ul>
+				</ol>
+				<button ng-disabled="action!=='edit'" ng-click="saveOrder()">Save order</button>
 			</div>
+			<br>
 			<input autocomplete-recipient type="text" ng-model="selectedBook" uib-typeahead="bookOption as bookOption.title for bookOption in allBooks | filter:$viewValue | limitTo:8" placeholder="Select a book to add">
 			<br>
 			<button ng-disabled="action!=='edit'" ng-click="addBook()">Add book</button>
