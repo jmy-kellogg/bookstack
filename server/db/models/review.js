@@ -13,6 +13,7 @@ module.exports = db.define('review', {
         }
     },
     comments: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
     }
 });
