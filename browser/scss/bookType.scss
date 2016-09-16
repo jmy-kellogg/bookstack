@@ -1,5 +1,15 @@
-* {
-    color: red;
-    border-width: 5px;
-    border-color: blue;
+.book-type {
+    margin: 10px;
+    padding: 5px;
+    color: darkslategray;
+    display: inline;
+    border-color: darkslategray;
+    border-radius: 15px;
+    border-width: 3px;
+    border-style: solid;
+    background-color: lightgray;
+}
+
+.book-type-list {
+    height: 40px;
 }
