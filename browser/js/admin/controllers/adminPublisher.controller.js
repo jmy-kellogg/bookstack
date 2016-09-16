@@ -5,10 +5,6 @@ app.controller('AdminPublisherCtrl', function($scope, PublisherFactory){
 	$scope.pullData = function(){
 		PublisherFactory.getAll()
 		.then(function(publishers){
-			publishers = publishers.map(function(publisher) {
-				publisher.fullName = $scope.formatName(publisher);
-				return publisher;
-			})
 			$scope.allPublishers = publishers;
 		})
 
@@ -40,7 +36,6 @@ app.controller('AdminPublisherCtrl', function($scope, PublisherFactory){
 	$scope.selectPublisherEdit = function(){
 		if (typeof $scope.selectedPublisherEdit === 'object') {
 			$scope.editPublisher = $scope.selectedPublisherEdit;
-			delete $scope.editPublisher.fullName;
 		}
 	};
 
@@ -68,8 +63,6 @@ app.controller('AdminPublisherCtrl', function($scope, PublisherFactory){
 		PublisherFactory.deletePublisher($scope.deletePublisher.id);
 		$scope.resetDeleteForm();
 	};
-
-	$scope.formatName = PublisherFactory.formatName;
 
 });
 

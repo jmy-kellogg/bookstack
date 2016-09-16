@@ -14,7 +14,7 @@ router.param('bookId', function(req, res, next, id) {
 		where: {
 			id: id
 		},
-		include: [Author, Publisher, Collection, Book_Type, Review]
+		include: [Author, Publisher, Collection, Book_Type]
 	})
 	.then(function(book) {
 		if (book) {
