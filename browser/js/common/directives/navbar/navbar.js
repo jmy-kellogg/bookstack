@@ -13,6 +13,8 @@ app.directive('navbar', function ($rootScope, $state) {
                 { label: 'Checkout', state: 'checkout' },
                 { label: 'Search', state: 'search' }, 
                 { label: 'Sign Up', state: 'signup' },
+                { label: 'Log In', state: 'login' },
+                { label: 'Welcome', state: 'welcome' },
                 { label: 'Admin', state: 'admin' }
             ];
 
