@@ -24,10 +24,10 @@ module.exports = db.define('user', {
     },
     salt: {
         type: Sequelize.STRING,
-        allowNull: false
     },
     isAdmin: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     },
     twitter_id: {
         type: Sequelize.STRING
