@@ -55,7 +55,7 @@ describe('address model', function() {
                             expect(err.errors.length).to.equal(1);
                         })
                 });
-                it('throws error if zip is not 4-5 digits', function() {
+                it('throws error if zip is null', function() {
                     return addressFactory({
                     	zip: null,
                     })
