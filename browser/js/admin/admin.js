@@ -12,6 +12,11 @@ app.config(function ($stateProvider) {
 		url: '/author',
 		templateUrl: '/js/admin/templates/adminAuthor.html',
 		controller: 'AdminAuthorCtrl'
+    })
+    .state('admin.publisher', {
+        url: '/publisher',
+        templateUrl: '/js/admin/templates/adminPublisher.html',
+        controller: 'AdminPublisherCtrl'
     });
 
 });

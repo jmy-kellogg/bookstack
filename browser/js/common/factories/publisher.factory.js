@@ -7,7 +7,7 @@ app.factory('PublisherFactory', function($http, $log){
 	};
 
 	publisherObj.getAll = function(){
-		return $http.get('/api/publishers/all')
+		return $http.get('/api/publishers/')
 			.then(getData)
 			.catch($log);
 	};
