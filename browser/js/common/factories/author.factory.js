@@ -7,19 +7,19 @@ app.factory('AuthorFactory', function($http, $log){
 	};
 
 	authorObj.getAll = function(){
-		return $http.get('/api/authors/all')
+		return $http.get('/api/authors/')
 			.then(getData)
 			.catch($log);
 	};
 
 	authorObj.addAuthor = function(author){
-		return $http.post('/api/authors/', {author})
+		return $http.post('/api/authors/', author)
 			.then(getData)
 			.catch($log);
 	};
 
 	authorObj.editAuthor = function(author){
-		return $http.put('/api/authors/edit/' + author.id, {author})
+		return $http.put('/api/authors/' + author.id, author)
 			.then(getData)
 			.catch($log);
 	};

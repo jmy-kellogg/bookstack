@@ -3,7 +3,24 @@ var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var Author = require('../../db').model('author');
 
-router.get('/all', function(req, res, next) {
+router.param('authorId', function(req, res, next, id) {
+	Author.findOne({
+		where: {
+			id: id
+		}
+	})
+	.then(function(author) {
+		if (author) {
+			req.author = author;
+		} else {
+			res.sendStatus(404);
+		}
+		next();
+	})
+	.catch(next);
+})
+
+router.get('/', function(req, res, next) {
 	// get all authors
 
 	Author.findAll()
@@ -16,25 +33,18 @@ router.get('/all', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	// add author
 
-	var authorInfo = req.body.author;
-
-	Author.create(authorInfo)
-	.then(function(author) {
+	Author.findOrCreate({where: req.body})
+	.spread(function(author) {
 		res.json(author);
 	})
 	.catch(next);
 });
 
-router.put('/edit/:authorId', function(req, res, next) {
+router.put('/:authorId', function(req, res, next) {
 	// edit author info
 
-	var authorInfo = req.body.author;
-
-	Author.findById(req.params.authorId)
-	.then(function(author) {
-		Object.assign(author, authorInfo);
-		return author.save();
-	})
+	Object.assign(req.author, req.body);
+	req.author.save()
 	.then(function(author) {
 		res.json(author);
 	})
@@ -44,12 +54,9 @@ router.put('/edit/:authorId', function(req, res, next) {
 router.delete('/:authorId', function(req, res, next) {
 	//delete author
 
-	Author.findById(req.params.authorId)
-	.then(function(author) {
-		return author.destroy();
-	})
+	req.author.destroy()
 	.then(function(){
-		res.send();
+		res.sendStatus(204);
 	})
 	.catch(next);
 });
