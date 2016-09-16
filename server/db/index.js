@@ -30,6 +30,7 @@ User.belongsToMany(Book, {through: Review});
 Book.belongsToMany(Author, {through: 'book_author'});
 Book.belongsToMany(Collection, {through: Book_Collection});
 Book.belongsTo(Publisher);
+Book.hasMany(Book_Type)
 Book_Type.belongsTo(Book);
 Line_Item.belongsTo(Invoice);
 // Invoice.belongsTo(User);

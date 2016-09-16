@@ -27,7 +27,7 @@ router.get('/single/:bookId', function(req, res, next) {
 		where: {
 			id: req.params.bookId
 		},
-		include: [Author, Publisher, Collection]
+		include: [Author, Publisher, Collection, Book_Type]
 	})
 	.then(function(book) {
 		res.json(book);
