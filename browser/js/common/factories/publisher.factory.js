@@ -12,19 +12,19 @@ app.factory('PublisherFactory', function($http, $log){
 			.catch($log);
 	};
 
-	publisherObj.addAuthor = function(publisher){
-		return $http.post('/api/publishers/', {publisher})
+	publisherObj.addPublisher = function(publisher){
+		return $http.post('/api/publishers/', publisher)
 			.then(getData)
 			.catch($log);
 	};
 
-	publisherObj.editAuthor = function(publisher){
-		return $http.put('/api/publishers/edit/' + publisher.id, {publisher})
+	publisherObj.editPublisher = function(publisher){
+		return $http.put('/api/publishers/' + publisher.id, publisher)
 			.then(getData)
 			.catch($log);
 	};
 
-	publisherObj.deleteAuthor = function(publisherId){
+	publisherObj.deletePublisher = function(publisherId){
 		return $http.delete('/api/publishers/' + publisherId)
 			.then(getData)
 			.catch($log);
