@@ -6,7 +6,26 @@ var Book = require('../../db').model('book');
 var Author = require('../../db').model('author');
 var Book_Collection = require('../../db').model('book_collection');
 
-router.get('/all', function(req, res, next) {
+router.param('collectionId', function(req, res, next, id) {
+	Collection.findOne({
+		where: {
+			id: id
+		},
+		include: [Book, Author]
+	})
+	.then(function(collection) {
+		if (collection) {
+			req.collection = collection;
+		} else {
+			res.sendStatus(404);
+		}
+		next();
+	})
+	.catch(next);
+})
+
+
+router.get('/', function(req, res, next) {
 	// get all collections
 
 	Collection.findAll()
@@ -19,57 +38,39 @@ router.get('/all', function(req, res, next) {
 router.get('/:collectionId', function(req, res, next) {
 	// get single collection
 
-	Collection.findAll({
-		include: [Book, Author],
-		where: {
-			id: req.params.collectionId
-		}
-	})
-	.then(function(collection) {
-		res.json(collection);
-	})
-	.catch(next);
+	res.json(req.collection);
+
 });
 
 router.post('/', function(req, res, next) {
 	// add collection
 
-	var collectionInfo = req.body.collection;
-
-	Collection.create(collectionInfo)
+	Collection.create(req.body)
 	.then(function(collection) {
 		res.json(collection);
 	})
 	.catch(next);
 });
 
-router.post('/:collectionId/addBook/:bookId', function(req, res, next) {
+router.post('/:collectionId/book/:bookId', function(req, res, next) {
 	// add book to collection
 
-	Collection.findById(req.params.collectionId)
-	.then(function(collection) {
-		return Book.findById(req.params.bookId)
-		.then(function(book) {
-			return collection.addBook(book);
-		})
+	Book.findById(req.params.bookId)
+	.then(function(book) {
+		return req.collection.addBook(book);
 	})
-	.then(function() {
-		res.send();
+	.then(function(data) {
+		res.json(data);
 	})
 	.catch(next);
 
 });
 
-router.put('/edit/:collectionId', function(req, res, next) {
+router.put('/:collectionId', function(req, res, next) {
 	// edit collection info
 
-	var collectionInfo = req.body.collection;
-
-	Collection.findById(req.params.collectionId)
-	.then(function(collection) {
-		Object.assign(collection, collectionInfo);
-		return collection.save();
-	})
+	Object.assign(req.collection, req.body);
+	req.collection.save()
 	.then(function(collection) {
 		res.json(collection);
 	})
@@ -95,8 +96,8 @@ router.put('/:collectionId/reorder', function(req, res, next) {
 	});
 
 	Promise.all(promisesForBookOrdering)
-	.then(function(){
-		res.send();
+	.then(function(data){
+		res.send(data);
 	})
 	.catch(next);
 
@@ -105,12 +106,9 @@ router.put('/:collectionId/reorder', function(req, res, next) {
 router.delete('/:collectionId/removeBook/:bookId', function(req, res, next) {
 	// remove book from collection
 
-	Collection.findById(req.params.collectionId)
-	.then(function(collection) {
-		return Book.findById(req.params.bookId)
-			.then(function(book) {
-				return collection.removeBook(book);
-			});
+	Book.findById(req.params.bookId)
+	.then(function(book) {
+		return req.collection.removeBook(book);
 	})
 	.then(function() {
 		return Book_Collection.findAll({
@@ -125,7 +123,7 @@ router.delete('/:collectionId/removeBook/:bookId', function(req, res, next) {
 		return Promise.all(promises);
 	})
 	.then(function(){
-		res.send();
+		res.sendStatus(204);
 	})
 	.catch(next);
 });
@@ -133,12 +131,9 @@ router.delete('/:collectionId/removeBook/:bookId', function(req, res, next) {
 router.delete('/:collectionId', function(req, res, next) {
 	//delete collection
 
-	Collection.findById(req.params.collectionId)
-	.then(function(collection) {
-		return collection.destroy();
-	})
+	req.collection.destroy()
 	.then(function(){
-		res.send();
+		res.sendStatus(204);
 	})
 	.catch(next);
 });
