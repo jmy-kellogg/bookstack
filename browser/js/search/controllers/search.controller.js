@@ -1,8 +1,5 @@
 app.controller('SearchCtl', function($scope, $stateParams, BookFactory){
 	$scope.searchTerm = $stateParams.result;
-	if($scope.searchTerm == "[object Object]"){
-		console.log("is object")
-	}
 
 	BookFactory.getAll()
 	.then(function(books){
@@ -10,7 +7,7 @@ app.controller('SearchCtl', function($scope, $stateParams, BookFactory){
 				return books
 			}
 		})
-		$scope.books= filteredBooks;
+		$scope.books = filteredBooks;
 	})
 
 })
