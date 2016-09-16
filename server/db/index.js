@@ -29,11 +29,12 @@ User.belongsToMany(Book_Type, { through: Line_Item });
 User.belongsToMany(Book, { through: Review });
 Book.belongsToMany(Author, { through: 'book_author' });
 Book.belongsToMany(Collection, { through: Book_Collection });
+Collection.belongsToMany(Book, { through: Book_Collection });
 Book.belongsTo(Publisher);
-Publisher.hasMany(Book)
+Publisher.hasMany(Book);
 Book_Type.belongsTo(Book);
-Book.hasMany(Book_Type)
+Book.hasMany(Book_Type);
 Line_Item.belongsTo(Invoice);
-Invoice.hasMany(Line_Item)
+Invoice.hasMany(Line_Item);
 Invoice.belongsTo(User_Payment);
-User_Payment.hasMany(Invoice)
+User_Payment.hasMany(Invoice);

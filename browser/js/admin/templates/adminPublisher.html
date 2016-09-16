@@ -1,0 +1,66 @@
+<div class="edit-block">
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="add">
+		</label>
+		<h3 class="inline">Add a publisher</h3>
+		<br>
+		<form class="content-edit-form" name="addPublisherForm" novalidate>
+			<label class="admin-menu-title">Publisher info:</label>
+			<br>
+			<br>
+			<label>Name:</label>
+			<input type="text" name="" ng-model="addPublisher.name">
+			<br>
+			<br>
+			<button ng-disabled="action!=='add'" ng-click="add()">Add publisher</button>
+			<button ng-disabled="action!=='add'" ng-click="clearAdd()">Clear</button>
+			<br>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="edit">
+		</label>
+		<h3 class="inline">Edit a publisher</h3>
+		<br>
+		<form class="content-edit-form" name="editPublisherForm" novalidate>
+			<input type="text" ng-model="selectedPublisherEdit" uib-typeahead="publisherOption as publisherOption.name for publisherOption in allPublishers | filter:$viewValue | limitTo:8" placeholder="Select a publisher">
+			<button ng-disabled="action!=='edit'" ng-click="selectPublisherEdit()">Select</button>
+			<button ng-disabled="action!=='edit'" ng-click="resetEditForm()">Reset</button>
+			<br>
+			<br>
+			<label class="admin-menu-title">Publisher info:</label>
+			<br>
+			<br>
+			<label>Name:</label>
+			<input type="text" name="" ng-model="editPublisher.name">
+			<br>
+			<br>
+			<button ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
+			<br>
+			<p ng-show="needPublisherForEdit">You must select a publisher to edit</p>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="delete">
+		</label>
+		<h3 class="inline">Delete a publisher</h3>
+		<br>
+		<form class="content-edit-form" name="deletePublisherForm" novalidate>
+			<input type="text" ng-model="selectedPublisherDelete" uib-typeahead="publisherOption as publisherOption.name for publisherOption in allPublishers | filter:$viewValue | limitTo:8" placeholder="Select a publisher">
+			<button ng-disabled="action!=='delete'" ng-click="selectPublisherDelete()">Select</button>
+			<button ng-disabled="action!=='delete'" ng-click="resetDeleteForm()">Reset</button>
+			<br>
+			<br>
+			<p>(Publisher card for {{deletePublisher.name}})</p>
+			<br>
+			<button ng-disabled="action!=='delete'" ng-click="delete()">Delete publisher</button>
+		</form>
+	</div>
+</div>

@@ -11,7 +11,10 @@ router.param('collectionId', function(req, res, next, id) {
 		where: {
 			id: id
 		},
-		include: [Book, Author]
+		include: [{
+			model: Book,
+			order: [['place_in_series']]
+		}]
 	})
 	.then(function(collection) {
 		if (collection) {
@@ -27,8 +30,12 @@ router.param('collectionId', function(req, res, next, id) {
 
 router.get('/', function(req, res, next) {
 	// get all collections
-
-	Collection.findAll()
+	Collection.findAll({
+		include: [{
+			model: Book,
+			order: [['place_in_series']]
+		}]
+	})
 	.then(function(collections) {
 		res.json(collections);
 	})
@@ -57,7 +64,7 @@ router.post('/:collectionId/book/:bookId', function(req, res, next) {
 
 	Book.findById(req.params.bookId)
 	.then(function(book) {
-		return req.collection.addBook(book);
+		return req.collection.addBook(book, {place_in_series: (req.collection.books.length+1)});
 	})
 	.then(function(data) {
 		res.json(data);
@@ -80,7 +87,7 @@ router.put('/:collectionId', function(req, res, next) {
 router.put('/:collectionId/reorder', function(req, res, next) {
 	// rearrange order of books in collection
 
-	var bookOrder = req.body.bookOrder; //bookOrder is an array of book ids in order of their order in a collection
+	var bookOrder = req.body; //bookOrder is an array of book ids in order of their order in a collection
 
 	var promisesForBookOrdering = bookOrder.map(function(bookId, index) {
 		return Book_Collection.findOne({
@@ -103,7 +110,7 @@ router.put('/:collectionId/reorder', function(req, res, next) {
 
 });
 
-router.delete('/:collectionId/removeBook/:bookId', function(req, res, next) {
+router.delete('/:collectionId/book/:bookId', function(req, res, next) {
 	// remove book from collection
 
 	Book.findById(req.params.bookId)
