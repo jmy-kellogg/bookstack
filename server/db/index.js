@@ -23,12 +23,12 @@ var User_Payment = require('./models/user_payment');
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
 
-User.belongsToMany(Address, {through: User_Address});
-User.belongsToMany(PaymentMethod, {through: User_Payment});
-User.belongsToMany(Book_Type, {through: Line_Item});
-User.belongsToMany(Book, {through: Review});
-Book.belongsToMany(Author, {through: 'book_author'});
-Book.belongsToMany(Collection, {through: Book_Collection});
+User.belongsToMany(Address, { through: User_Address });
+User.belongsToMany(PaymentMethod, { through: User_Payment });
+User.belongsToMany(Book_Type, { through: Line_Item });
+User.belongsToMany(Book, { through: Review });
+Book.belongsToMany(Author, { through: 'book_author' });
+Book.belongsToMany(Collection, { through: Book_Collection });
 Book.belongsTo(Publisher);
 Publisher.hasMany(Book)
 Book_Type.belongsTo(Book);
