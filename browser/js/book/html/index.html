@@ -2,14 +2,26 @@
 
 <div class="col-lg-12">
     <img class="col-lg-3" src="{{ cover_url }}">
-    <h1>{{ book.title }}</h1>
-    <h2>by <a ng-repeat="author in book.authors" href="">{{ author.full_name }}</a></h2>
 
-    <div ng-repeat="collection in book.collections">
-    <p> Book {{ collection.book_collection.place_in_series }} of {{ collection.total_books }} in {{ collection.name }}</p>
+    <div>
+        <h1>{{ book.title }}</h1>
+        <h2>by <a ng-repeat="author in book.authors" href="">{{ author.full_name }}</a></h2>
 
     </div>
 
+    <div ng-repeat="collection in book.collections">
+        <p> Book {{ collection.book_collection.place_in_series }} of {{ collection.total_books }} in {{ collection.name }}</p>
+
+    </div>
+    <div class="book-type-list col-lg-9">
+        <book-type ng-repeat="bookType in book.book_types"></book-type>
+    </div>
+
+    <div class="col-lg-9 book-info">
+        <h3>{{ book.genre }}</h3>
+        <h3>{{ book.publisher.name }}</h3>
+
+    </div>
     <pre>{{ book | json}}</pre>
 
 </div>
