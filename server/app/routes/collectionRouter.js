@@ -3,7 +3,6 @@ var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var Collection = require('../../db').model('collection');
 var Book = require('../../db').model('book');
-var Author = require('../../db').model('author');
 var Book_Collection = require('../../db').model('book_collection');
 
 router.param('collectionId', function(req, res, next, id) {
@@ -64,7 +63,7 @@ router.post('/:collectionId/book/:bookId', function(req, res, next) {
 
 	Book.findById(req.params.bookId)
 	.then(function(book) {
-		return req.collection.addBook(book, {place_in_series: (req.collection.books.length+1)});
+		return req.collection.addBook(book, {place_in_series: (req.collection.books.length + 1)});
 	})
 	.then(function(data) {
 		res.json(data);

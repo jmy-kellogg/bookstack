@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, $state) {
+app.directive('navbar', function () {
 
     return {
         restrict: 'E',
@@ -11,7 +11,7 @@ app.directive('navbar', function ($rootScope, $state) {
                 { label: 'Cart', state: 'cart'},
                 { label: 'Bookshelf', state: 'bookshelf' },
                 { label: 'Checkout', state: 'checkout' },
-                { label: 'Search', state: 'search' }, 
+                { label: 'Search', state: 'search' },
                 { label: 'Sign Up', state: 'signup' },
                 { label: 'Log In', state: 'login' },
                 { label: 'Welcome', state: 'welcome' },

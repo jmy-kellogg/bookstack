@@ -1,0 +1,59 @@
+#welcome {
+	background-image: url('http://media.istockphoto.com/photos/books-picture-id484062652?k=6&m=484062652&s=170667a&w=0&h=g_LpFO8PPdKVvi9iYzNjfmF0o219ELypPBWsW2Vb41E=');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	text-align: center;
+}
+
+.name-logo {
+	padding-top: 10vh;
+}
+
+.welcome-logo {
+	width: 80px;
+	height: 80px;
+	margin-bottom: 10px;
+}
+
+.welcome-name {
+	font-size: 60px;
+	font-family: "Times New Roman", Georgia, Serif;
+}
+
+.welcome-group {
+	width: 40%;
+	margin-left: 50%;
+}
+
+.welcome-group .btn-div-1 {
+	padding-top: 10vh;
+	padding-bottom: 30px;
+	border-bottom: 1px solid grey;
+}
+
+.welcome-group .btn-div-2 {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid grey;
+}
+
+.welcome-group .btn-div-3 {
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.welcome-signup, .welcome-login {
+	height: 40px;
+	width: 60%;
+	border-radius: 5px;
+	border: 1px solid grey;
+	background-color: #d0dae2;
+	color: black;
+}
+
+.align {
+	width: 70%;
+}
+
+

@@ -1,11 +1,19 @@
 <div id="welcome">
-	<h1>Welcome!</h1>
-	<div class="btn-group-vertical" role="group" >
-		<button type="button" class="btn btn-primary" ui-sref="signup">Sign Up</button>
-		<button type="button" class="btn btn-primary" ui-sref="login">Log In</button>
-		<button type="button" class="btn btn-primary" ui-sref="search">Browse</button>
-
-		<search_box name="searchBoxResult"></search_box>
+	<div class="welcome-group">
+		<div class="name-logo">
+			<img class="welcome-logo" src="/logo.gif">
+			<span class="welcome-name">Bookstack</span>
+		</div>
+		<div class="btn-div-1">
+			<button class="welcome-signup" type="button" ui-sref="signup">SIGN UP</button>
+		</div>
+		<div class="btn-div-2">
+			<button class="welcome-login" type="button" ui-sref="login">LOG IN</button>
+		</div>
+		<div class="btn-div-3">
+			<search-box class="align" name="searchBoxResult"></search-box>
+			<p>or <a ui-sref="search">click here</a> to browse</p>
+		</div>
 	</div>
 
 </div>
