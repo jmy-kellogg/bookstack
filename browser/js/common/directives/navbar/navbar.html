@@ -1,13 +1,13 @@
-<nav class="navbar navbar-static-top">
+<nav id="navbar" class="navbar navbar-static-top">
     <div class="navbar-logo-name">
-        <a ui-sref="home"><img class="navbar-logo" src="/logo.gif">
+        <a ui-sref="search"><img class="navbar-logo" src="/logo.gif">
         <span class="navbar-name">Bookstack</span></a>
     </div>
     <div class="navbar-search">
         <search-box name="searchBoxResult"></search-box>
     </div>
     <div class="navbar-links">
-        <ul class="nav navbar-nav ">
+        <ul class="nav navbar-nav">
             <li ng-repeat="item in items">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
