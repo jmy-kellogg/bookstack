@@ -6,7 +6,7 @@ router.use('/authors', require('./authorRouter.js'));
 router.use('/publishers', require('./publisherRouter.js'));
 router.use('/collections', require('./collectionRouter.js'));
 router.use('/books', require('./bookRouter.js'));
-router.use('/signup', require('./signUpRouter.js'));
+router.use('/users', require('./userRouter.js'));
 
 // Make sure this is after all of
 // the registered routes!

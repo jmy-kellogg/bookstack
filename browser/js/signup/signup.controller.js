@@ -1,6 +1,6 @@
-app.controller('signUpController', function($scope, $state, signUpFactory) {
+app.controller('signUpController', function($scope, $state, UserFactory) {
     $scope.signUpSubmit = function() {
-        signUpFactory.createUser($scope.signup)
+        UserFactory.createUser($scope.signup)
             .then(function() {
                 $state.go('login')
             })
