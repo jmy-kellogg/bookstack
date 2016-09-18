@@ -1,14 +1,23 @@
 
 
 #welcome {
+  background-image: url(https://booadventures.files.wordpress.com/2016/08/best-books-book-youll-ever-read.jpg?w=982);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: -20px;
+  height: 100vh;
 	color: #F1F1D4;
 	font-family: Book Antiqua;
-	text-align: center;
 }
 
 #welcome h1{
+  padding: 50px 0px 50px 160px; 
 	font-size: 60px;
 	text-shadow: 2px 2px #606054
+}
+
+#welcome .col-sm-5{
+ padding: 10px 50px; 
 }
 
 
