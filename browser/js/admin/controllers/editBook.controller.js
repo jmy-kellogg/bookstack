@@ -39,7 +39,7 @@ app.controller('EditBookCtrl', function($scope, BookFactory, AuthorFactory, Publ
 		} else if (typeof $scope.selectedAuthor === 'object') {
 			$scope.authors.push($scope.selectedAuthor);
 			BookFactory.addAuthorToBook($scope.selectedBook.id, $scope.selectedAuthor.id);
-			$scope.selectedAuthor = "";
+			$scope.selectedAuthor = '';
 			$scope.invalidAuthor = false;
 			$scope.needBook = false;
 		} else {
@@ -68,14 +68,14 @@ app.controller('EditBookCtrl', function($scope, BookFactory, AuthorFactory, Publ
 		} else if (typeof $scope.selectedPublisher === 'object') {
 			BookFactory.changeBookPublisher($scope.selectedBook.id, $scope.selectedPublisher.id)
 			$scope.publisher = $scope.selectedPublisher;
-			$scope.selectedPublisher = "";
+			$scope.selectedPublisher = '';
 			$scope.invalidPublisher = false;
 			$scope.needBookforPub = false;
 		} else {
 			$scope.invalidPublisher = true;
 			$scope.needBookForPub = false;
 		}
-		
+
 	};
 
 	$scope.selectBook = function(){

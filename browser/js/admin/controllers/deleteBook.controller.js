@@ -9,7 +9,7 @@ app.controller('DeleteBookCtrl', function($scope, BookFactory) {
 
 	$scope.resetForm = function(){
 		$scope.book = {};
-		$scope.selectedBook = "";
+		$scope.selectedBook = '';
 		$scope.pullData();
 	};
 	$scope.resetForm();

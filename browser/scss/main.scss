@@ -4,6 +4,8 @@
 
 
 body{
+    color: #F1F1D4;
+    font-family: Book Antiqua;
     font-family: Book Antiqua;
     background-image: url('woodBackground.jpg');
     background-repeat:repeat;
@@ -43,8 +45,10 @@ pre {
 
 
 @import './admin.scss';
-@import 'welcome/main.scss';
+@import './navbar.scss';
 @import './sidebar.scss';
 @import './searchResult.scss';
 @import './bookType.scss';
 @import './login.scss';
+@import './welcome.scss'
+
