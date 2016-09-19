@@ -66,7 +66,7 @@ var seedUsers = function() {
         { "first_name": "Molly", "last_name": "Owen", "email": "posuere.enim@Aliquam.org", "password": "GLD93TFN3LK" },
         { "first_name": "Lydia", "last_name": "Vance", "email": "netus.et.malesuada@fermentumconvallis.ca", "password": "ZRC45YZO5MI" },
         { "first_name": "Illana", "last_name": "Weeks", "email": "et.magnis.dis@felisullamcorper.edu", "password": "WVP89WZJ1VM" },
-        { "first_name": "Zeke", "last_name": "Nierenberg", "email": "zeke@zeke.zeke", "password": "123" },
+        { "first_name": "Zeke", "last_name": "Nierenberg", "email": "zeke@zeke.zeke", "password": "123", isAdmin: true },
         { "first_name": "Chris", "last_name": "LoneWolf", "email": "chris@chris.chris", "password": "123" },
         { "first_name": "Jessica", "last_name": "NormalWolf", "email": "jessica@jessica.jessica", "password": "123" }
 
