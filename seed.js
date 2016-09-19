@@ -69,8 +69,6 @@ var seedUsers = function() {
         { "first_name": "Zeke", "last_name": "Nierenberg", "email": "zeke@zeke.zeke", "password": "123", isAdmin: true },
         { "first_name": "Chris", "last_name": "LoneWolf", "email": "chris@chris.chris", "password": "123" },
         { "first_name": "Jessica", "last_name": "NormalWolf", "email": "jessica@jessica.jessica", "password": "123" }
-
-
     ]
 
 
