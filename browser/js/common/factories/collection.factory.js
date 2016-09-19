@@ -54,6 +54,7 @@ app.factory('CollectionFactory', function($http, $log){
 			.catch($log);
 	};
 
+
 	return collectionObj;
 
 });
