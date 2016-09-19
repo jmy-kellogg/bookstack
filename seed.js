@@ -65,7 +65,8 @@ var seedUsers = function() {
         { "first_name": "Zena", "last_name": "Mcgowan", "email": "velit@purus.edu", "password": "YVF68UJC0PG" },
         { "first_name": "Molly", "last_name": "Owen", "email": "posuere.enim@Aliquam.org", "password": "GLD93TFN3LK" },
         { "first_name": "Lydia", "last_name": "Vance", "email": "netus.et.malesuada@fermentumconvallis.ca", "password": "ZRC45YZO5MI" },
-        { "first_name": "Illana", "last_name": "Weeks", "email": "et.magnis.dis@felisullamcorper.edu", "password": "WVP89WZJ1VM" }
+        { "first_name": "Illana", "last_name": "Weeks", "email": "et.magnis.dis@felisullamcorper.edu", "password": "WVP89WZJ1VM" },
+        { "first_name": "Zeke", "last_name": "Nierenberg", "email": "zeke@zeke.zeke", "password": "123", isAdmin: true }
     ]
 
 
@@ -354,13 +355,13 @@ db.sync({ force: true })
             { "type": "leatherbound", "price": 42.00, "quantity": 15, "num_pages": 364 }
         ]
         return Promise.all(
-            
+
             books.map(book => {
                 return bookTypes.map(bT => {
                     return BookType.create(bT)
-                    .then(_bT => {
-                        return _bT.setBook(book)
-                    })
+                        .then(_bT => {
+                            return _bT.setBook(book)
+                        })
                 })
             })
         )
