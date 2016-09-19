@@ -1,55 +1,44 @@
 #welcome {
-	background-image: url('http://media.istockphoto.com/photos/books-picture-id484062652?k=6&m=484062652&s=170667a&w=0&h=g_LpFO8PPdKVvi9iYzNjfmF0o219ELypPBWsW2Vb41E=');
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 100vh;
-	text-align: center;
+  background-image: url('https://booadventures.files.wordpress.com/2016/08/best-books-book-youll-ever-read.jpg?w=982');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: -20px;
+  height: 100vh;
+	color: #F1F1D4;
+	font-family: Book Antiqua;
 }
 
-.name-logo {
-	padding-top: 10vh;
-}
-
-.welcome-logo {
-	width: 80px;
-	height: 80px;
-	margin-bottom: 10px;
-}
-
-.welcome-name {
+#welcome h1{
+  padding: 50px 0px 50px 160px; 
 	font-size: 60px;
-	font-family: Helvetica, Georgia, sans-serif;
+	text-shadow: 2px 2px #606054
 }
 
-.welcome-group {
-	width: 40%;
-	margin-left: 50%;
-}
-
-.welcome-group .btn-div-1 {
-	padding-top: 10vh;
-	padding-bottom: 30px;
-	border-bottom: 1px solid grey;
-}
-
-.welcome-group .btn-div-2 {
-	padding-top: 30px;
-	padding-bottom: 30px;
-	border-bottom: 1px solid grey;
-}
-
-.welcome-group .btn-div-3 {
-	padding-top: 30px;
-	padding-bottom: 20px;
-}
-
-.welcome-signup, .welcome-login {
-	height: 40px;
-	width: 60%;
-	border-radius: 5px;
-	border: 1px solid grey;
-	background-color: #d0dae2;
-	color: black;
+#welcome .col-sm-5{
+ padding: 10px 50px; 
 }
 
 
+.btn-welcomePage {
+  margin: 20px 0px;
+  color: #F1F1D4;
+  font-size: 30px;
+  background: none;
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+} 
+
+.btn-welcomePage:hover {
+	margin: 20px 0px;
+  color: #F1F1D4;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388; 
+}

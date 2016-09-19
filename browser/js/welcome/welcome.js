@@ -1,6 +1,6 @@
 app.config(function ($stateProvider) {
     $stateProvider.state('welcome', {
-        url: '/',
-        templateUrl: 'js/welcome/welcome.html'
+        url: '/welcome',
+        templateUrl: 'js/welcome/welcome.html',
     });
 });

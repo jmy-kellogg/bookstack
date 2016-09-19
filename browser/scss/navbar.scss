@@ -1,11 +1,16 @@
 #navbar {
-	background-color: #094277;
+	color: #F1F1D4;
+	background-image: url('http://allroundnews.com/wp-content/uploads/2012/02/seamless-wood-texture-free-1.jpg');
+	box-shadow: 0 0 8px 5px #130e08;
 }
 
 .navbar-logo-name, .navbar-search, .navbar-links {
 	display: inline-block;
 }
 
+#navbar{
+	position: relative;
+}
 .navbar-search {
 	width: 45%;
 }
@@ -21,18 +26,18 @@
 	margin-top: 15px;
 	margin-bottom: 10px;
 	float: left;
-	color: white;
+	color: #F1F1D4;
 }
 
 .navbar-name {
 	font-size: 30px;
-	font-family: Helvetica, Georgia, sans-serif;
+	font-family: Book Antiqua;
 }
 
 .navbar-links {
 	float: right;
 	margin-top: 15px;
-	color: white;
+	color: #F1F1D4;
 }
 
 #navbar a, #navbar a:hover, #navbar a:visited { 
