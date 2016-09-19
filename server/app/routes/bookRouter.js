@@ -42,6 +42,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:bookId', function(req, res, next) {
 	//route to get all info for a single book by book id, meant for single book state
+	console.log(req.session.cookie)
 	res.json(req.book);
 
 });
