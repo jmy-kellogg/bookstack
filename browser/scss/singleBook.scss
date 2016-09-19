@@ -1,0 +1,29 @@
+.cart-sidebar {
+    background-image: url('http://img01.deviantart.net/8bc3/i/2010/237/0/4/parchment_paper_2_by_allocer2009.jpg');
+    box-shadow: 0 0 5px 3px #d5ba5f;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: black;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.singleBookImage {
+    width: 100%;
+    height: auto;
+}
+
+.bold-title {
+    font-weight: bold;
+}
+
+.cart-item {
+    padding: 5px 0;
+}
+
+.float-right {
+    float: right;
+}

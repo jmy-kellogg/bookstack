@@ -65,7 +65,7 @@ var seedUsers = function() {
         { "first_name": "Zena", "last_name": "Mcgowan", "email": "velit@purus.edu", "password": "YVF68UJC0PG" },
         { "first_name": "Molly", "last_name": "Owen", "email": "posuere.enim@Aliquam.org", "password": "GLD93TFN3LK" },
         { "first_name": "Lydia", "last_name": "Vance", "email": "netus.et.malesuada@fermentumconvallis.ca", "password": "ZRC45YZO5MI" },
-        { "first_name": "Illana", "last_name": "Weeks", "email": "et.magnis.dis@felisullamcorper.edu", "password": "WVP89WZJ1VM" }
+        { "first_name": "Illana", "last_name": "Weeks", "email": "zeke@zeke.zeke", "password": "123" }
     ]
 
 
