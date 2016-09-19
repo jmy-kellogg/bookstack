@@ -6,7 +6,7 @@ var db = require('../_db');
 
 module.exports = db.define('line_item', {
     status: {
-        type: Sequelize.ENUM('viewed', 'cart', 'purchased', 'returned')
+        type: Sequelize.ENUM('viewed', 'cart', 'purchased', 'returned') // eslint-disable-line new-cap
     },
     unit_price: {
         type: Sequelize.INTEGER

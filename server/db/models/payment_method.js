@@ -6,12 +6,11 @@ var db = require('../_db');
 
 module.exports = db.define('payment_method', {
     token: {
-    	type: Sequelize.STRING,
-    	allowNull: false
+		type: Sequelize.STRING,
+		allowNull: false
     },
     lastFour: {
 		type: Sequelize.STRING,
-		allowNull: false
-    }
+	}
 });
 

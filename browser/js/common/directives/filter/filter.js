@@ -1,4 +1,4 @@
-app.directive('filter', function ($rootScope, $state) {
+app.directive('filter', function () {
 
     return {
         restrict: 'E',
