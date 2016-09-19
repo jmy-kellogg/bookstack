@@ -4,7 +4,7 @@ app.directive('filter', function () {
         restrict: 'E',
         scope: { searchBoxResult: '='},
         templateUrl: 'js/common/directives/filter/filter.html',
-
+        contorller: 'FilterCtl'
     };
 
 });
