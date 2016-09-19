@@ -3,8 +3,13 @@
 }
 
 
-body {
-    background: #fdfdfd;
+body{
+    color: #F1F1D4;
+    font-family: Book Antiqua;
+    font-family: Book Antiqua;
+    background-image: url('woodBackground.jpg');
+    background-repeat:repeat;
+    background-size: 100%;
 }
 
 pre {
@@ -29,10 +34,21 @@ pre {
     margin: 0 auto;
 }
 
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-top: 10%;
+    margin-right:-4px;
+}
+
+
 
 @import './admin.scss';
 @import './navbar.scss';
 @import './sidebar.scss';
 @import './searchResult.scss';
 @import './bookType.scss';
-@import './welcome.scss';
+@import './login.scss';
+@import './welcome.scss'
+
