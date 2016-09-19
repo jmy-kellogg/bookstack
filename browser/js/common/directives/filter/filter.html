@@ -1,13 +1,38 @@
 <div ng-controller="FilterCtl">
     <sidebar>
-        <div id="filter">
+        <form name="genre" id="filter">
             <h1>Genre</h1>
             <div class="checkbox">
-                <label><input type="checkbox" value="">Fiction</label>
+                <label><input type="checkbox" value="All" ng-model="getGenre.All" ng-click= "getGenreResult()">Show All</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" value="">Non-fiction</label>
+                <label><input type="checkbox" value="Fiction" ng-model="getGenre.Fiction" ng-click= "getGenreResult()">Fiction</label>
             </div>
-        </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="Non-fiction" ng-model="getGenre.Nonfiction" ng-click= "getGenreResult()">Non-fiction</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="Comedy" ng-model="getGenre.Comedy" ng-click= "getGenreResult()">Comedy</label>
+            </div>
+                <div class="checkbox">
+                <label><input type="checkbox" value="Satire" ng-model="getGenre.Satire" ng-click= "getGenreResult()">Satire</label>
+            </div>
+                <div class="checkbox">
+                <label><input type="checkbox" value="Romance novel" ng-model="getGenre.Romance" ng-click= "getGenreResult()">Romance novel</label>
+            </div>
+                <div class="checkbox">
+                <label><input type="checkbox" value="Drama" ng-model="getGenre.Drama" ng-click= "getGenreResult()">Drama</label>
+            </div>
+                <div class="checkbox">
+                <label><input type="checkbox" value="Horror" ng-model="getGenre.Horror" ng-click= "getGenreResult()">Horror</label>
+            </div>
+                <div class="checkbox">
+                <label><input type="checkbox" value="Realistic fiction" ng-model="getGenre.Realistic" ng-click= "getGenreResult()">Realistic fiction</label>
+            </div>
+                <div class="checkbox">
+                <label><input type="checkbox" value="Tragedy" ng-model="getGenre.Tragedy" ng-click= "getGenreResult()">Tragedy</label>
+            </div>
+        </form>
+       
     </sidebar>
 </div>
