@@ -1,13 +1,11 @@
 'use strict';
-var Promise = require('bluebird');
-var router = require('express').Router();
+var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var Book = require('../../db').model('book');
 var Author = require('../../db').model('author');
 var Publisher = require('../../db').model('publisher');
 var Book_Type = require('../../db').model('book_type');
 var Collection = require('../../db').model('collection');
-var Review = require('../../db').model('review');
 
 router.param('bookId', function(req, res, next, id) {
 	Book.findOne({
@@ -42,6 +40,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:bookId', function(req, res, next) {
 	//route to get all info for a single book by book id, meant for single book state
+	console.log(req.session.cookie)
 	res.json(req.book);
 
 });
