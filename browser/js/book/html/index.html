@@ -2,27 +2,67 @@
 
 <div class="row container-fluid">
 
-    <div class="col-md-3">
-        <img class="singleBookImage" src="{{ cover_url }}">
-    </div>
-    
-
-    <div class="col-md-5">
-        <h2>{{ book.title }}</h2>
-        <h3>by <span ng-repeat="author in book.authors">{{ author.full_name }}</span></h3>
-        <h4>{{ book.genre }}</h4>
-
-        <p ng-repeat="collection in book.collections"> Book {{ collection.book_collection.place_in_series }} of {{ collection.total_books }} in {{ collection.name }}</p>
-        <form id="radio-list">
-            <div class="btn-group" data-toggle="buttons">
-                <book-type ng-repeat="bookType in book.book_types"></book-type>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="singleBookImage" src="{{ cover_url }}">
             </div>
-        </form>
-        <br><br>
-        <button class="submit-style" ng-click="addToCart()">Add to cart</button>
+        
+            <div class="col-md-8">
+                <h2>{{ book.title }}</h2>
+                <h3>by <span ng-repeat="author in book.authors">{{ author.full_name }}</span></h3>
+                <h4>{{ book.genre }}</h4>
 
-        <!-- <pre>{{ book | json}}</pre> -->
-
+                <p ng-repeat="collection in book.collections"> Book {{ collection.book_collection.place_in_series }} of {{ collection.total_books }} in {{ collection.name }}</p>
+                <form id="radio-list">
+                    <div class="btn-group" data-toggle="buttons">
+                        <book-type ng-repeat="bookType in book.book_types"></book-type>
+                    </div>
+                </form>
+                <br><br>
+                <button class="submit-style" ng-click="addToCart()">Add to cart</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="book-reviews">
+                    <h3>Reviews:</h3>
+                    <div class="single-review" ng-hide="reviews.length">
+                        <p>There are no reviews yet for this book.</p>
+                    </div>
+                    <div class="single-review">
+                        <h4>Add review:</h4>
+                        <span>Stars: </span>
+                        <span ng-click="changeCommentStars(1)" ng-show="reviewToAdd.stars > .5" class="glyphicon glyphicon-star"></span>
+                        <span ng-click="changeCommentStars(2)" ng-show="reviewToAdd.stars > 1.5" class="glyphicon glyphicon-star"></span>
+                        <span ng-click="changeCommentStars(3)" ng-show="reviewToAdd.stars > 2.5" class="glyphicon glyphicon-star"></span>
+                        <span ng-click="changeCommentStars(4)" ng-show="reviewToAdd.stars > 3.5" class="glyphicon glyphicon-star"></span>
+                        <span ng-click="changeCommentStars(5)" ng-show="reviewToAdd.stars > 4.5" class="glyphicon glyphicon-star"></span>
+                        <span ng-click="changeCommentStars(1)" ng-hide="reviewToAdd.stars > .5" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-click="changeCommentStars(2)" ng-hide="reviewToAdd.stars > 1.5" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-click="changeCommentStars(3)" ng-hide="reviewToAdd.stars > 2.5" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-click="changeCommentStars(4)" ng-hide="reviewToAdd.stars > 3.5" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-click="changeCommentStars(5)" ng-hide="reviewToAdd.stars > 4.5" class="glyphicon glyphicon-star-empty"></span>
+                        <textarea rows="4" ng-model="reviewToAdd.comments"></textarea>
+                        <button ng-click="addReview()">Submit review</button>
+                    </div>
+                    <div class="single-review" ng-repeat="review in reviews">
+                        <span ng-show="{{review.review.stars > .5}}" class="glyphicon glyphicon-star"></span>
+                        <span ng-show="{{review.review.stars > 1.5}}" class="glyphicon glyphicon-star"></span>
+                        <span ng-show="{{review.review.stars > 2.5}}" class="glyphicon glyphicon-star"></span>
+                        <span ng-show="{{review.review.stars > 3.5}}" class="glyphicon glyphicon-star"></span>
+                        <span ng-show="{{review.review.stars > 4.5}}" class="glyphicon glyphicon-star"></span>
+                        <span ng-hide="{{review.review.stars > .5}}" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-hide="{{review.review.stars > 1.5}}" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-hide="{{review.review.stars > 2.5}}" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-hide="{{review.review.stars > 3.5}}" class="glyphicon glyphicon-star-empty"></span>
+                        <span ng-hide="{{review.review.stars > 4.5}}" class="glyphicon glyphicon-star-empty"></span>
+                        <p>by {{review.first_name}} on {{review.review.createdAt | date}}</p>
+                        <p>{{review.review.comments}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="col-md-4">

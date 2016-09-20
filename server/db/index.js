@@ -27,6 +27,7 @@ User.belongsToMany(PaymentMethod, { through: User_Payment });
 User.belongsToMany(Book_Type, { through: Line_Item });
 Book_Type.belongsToMany(User, { through: Line_Item });
 User.belongsToMany(Book, { through: Review });
+Book.belongsToMany(User, { through: Review });
 Book.belongsToMany(Author, { through: 'book_author' });
 Book.belongsToMany(Collection, { through: Book_Collection });
 Collection.belongsToMany(Book, { through: Book_Collection });

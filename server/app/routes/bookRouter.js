@@ -6,13 +6,14 @@ var Author = require('../../db').model('author');
 var Publisher = require('../../db').model('publisher');
 var Book_Type = require('../../db').model('book_type');
 var Collection = require('../../db').model('collection');
+var User = require('../../db').model('user');
 
 router.param('bookId', function(req, res, next, id) {
 	Book.findOne({
 		where: {
 			id: id
 		},
-		include: [Author, Publisher, Collection, Book_Type]
+		include: [Author, Publisher, Collection, Book_Type, User]
 	})
 	.then(function(book) {
 		if (book) {
@@ -40,7 +41,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:bookId', function(req, res, next) {
 	//route to get all info for a single book by book id, meant for single book state
-	console.log(req.session.cookie)
+
 	res.json(req.book);
 
 });
@@ -105,6 +106,16 @@ router.delete('/:bookId/author/:authorId', function(req, res, next) {
 	.then(function(author) {
 		return req.book.removeAuthor(author);
 	})
+	.then(function(data){
+		res.json(data);
+	})
+	.catch(next);
+});
+
+router.post('/:bookId/review', function(req, res, next) {
+	// add review to book
+
+	req.book.addUser(req.user, req.body)
 	.then(function(data){
 		res.json(data);
 	})
