@@ -2,19 +2,13 @@
 /*
 	A. Mini Reset 
 */
-*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-
-* {
+/**, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+*/
+/** {
   margin: 0;
   padding: 0;
-}
-
-/*#bookshelf{
-	background-image: url('http://eab.abime.net/attachment.php?attachmentid=42230&d=1416048294');
-    background-repeat: repeat;
-    background-size: cover;
-    height: 100vh;
 }*/
+
 
 ::before,
 ::after {
@@ -27,10 +21,10 @@ ul {
 	list-style: none;
 }
 
-a {
+/*a {
 	color: #2c3e50;
 	text-decoration: none;
-}
+}*/
 
 .btn-book {
 	display: inline-block;
@@ -78,6 +72,7 @@ a {
 
 /* HARDCOVER FRONT */
 .hardcover_front li:first-child {
+	margin-left: -10px;
 	background-color: #eee;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -339,6 +334,7 @@ a {
 
 /* BOOK SPINE */
 .book_spine {
+	background: transparent;
 	-webkit-transform: rotateY(60deg) translateX(-5px) translateZ(-12px);
 	-moz-transform: rotateY(60deg) translateX(-5px) translateZ(-12px);
 	transform: rotateY(60deg) translateX(-5px) translateZ(-12px);

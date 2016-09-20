@@ -65,7 +65,10 @@ var seedUsers = function() {
         { "first_name": "Zena", "last_name": "Mcgowan", "email": "velit@purus.edu", "password": "YVF68UJC0PG" },
         { "first_name": "Molly", "last_name": "Owen", "email": "posuere.enim@Aliquam.org", "password": "GLD93TFN3LK" },
         { "first_name": "Lydia", "last_name": "Vance", "email": "netus.et.malesuada@fermentumconvallis.ca", "password": "ZRC45YZO5MI" },
-        { "first_name": "Illana", "last_name": "Weeks", "email": "et.magnis.dis@felisullamcorper.edu", "password": "WVP89WZJ1VM" }
+        { "first_name": "Illana", "last_name": "Weeks", "email": "et.magnis.dis@felisullamcorper.edu", "password": "WVP89WZJ1VM" },
+        { "first_name": "Zeke", "last_name": "Nierenberg", "email": "zeke@zeke.zeke", "password": "123", isAdmin: true },
+        { "first_name": "Chris", "last_name": "LoneWolf", "email": "chris@chris.chris", "password": "123" },
+        { "first_name": "Jessica", "last_name": "NormalWolf", "email": "jessica@jessica.jessica", "password": "123" }
     ]
 
 
@@ -186,11 +189,11 @@ var seedBookTypes = function() {
 var seedCollections = function() {
 
     var collections = [
-        { "name": "as series as series can be", "total_books": 3 },
-        { "name": "Totes Mcgotes Series", "total_books": 4 },
-        { "name": "Serious series", "total_books": 2 },
-        { "name": "Series in the cool", "total_books": 6 },
-        { "name": "Harry Potter Series", "total_books": 5 }
+        { "name": "Best Sellers - The New York Times", "total_books": 3 },
+        { "name": "Recommended", "total_books": 4 },
+        { "name": "Random Suggestions", "total_books": 3 },
+        { "name": "Good Reads", "total_books": 1 },
+        { "name": "Harry Potter Series", "total_books": 7 }
     ]
     return Promise.all(collections.map(function(collectionObj) {
         return Collection.create(collectionObj);
@@ -223,29 +226,37 @@ var seedInvoices = function() {
 var seedBooks = function() {
 
     var books = [
-        { "title": "Dictum. Phasellus in Felis Nulla", "genre": "Non-fiction", "book_score": "50" },
-        { "title": "Dolor dapibus gravida Aliquam", "genre": "Horror", "book_score": "50" },
-        { "title": "A felis ullamcorper viverra Maecenas", "genre": "Non-fiction", "book_score": "50" },
-        { "title": "Nullam lobortis quam", "genre": "Realistic fiction", "book_score": "50" },
-        { "title": "Mauris quis turpis Vitae Purus Gravida", "genre": "Realistic fiction", "book_score": "49" },
-        { "title": "laoreet ipsum. Curabitur consequat", "genre": "Drama", "book_score": "50" },
-        { "title": "Molestie in, Tempus eu, Ligula", "genre": "Realistic fiction", "book_score": "50" },
-        { "title": "Nulla vulputate Dui, Nec Tempus", "genre": "Drama", "book_score": "50" },
-        { "title": "Sit amet Ultricies Sem Magna", "genre": "Tragedy", "book_score": "49" },
-        { "title": "Augue eu Tellus", "genre": "Romance novel", "book_score": "50" },
-        { "title": "Praesent eu dui. Cum sociis", "genre": "Drama", "book_score": "39" },
-        { "title": "Velit. Pellentesque ultricies dignissim lacus. Aliquam", "genre": "Satire", "book_score": "49" },
-        { "title": "Commodo ipsum. Suspendisse non leo", "genre": "Romance novel", "book_score": "50" },
-        { "title": "Eu neque pellentesque massa lobortis ultrices", "genre": "Satire", "book_score": "51" },
-        { "title": "Lacus. Quisque purus sapien, gravida non", "genre": "Horror", "book_score": "50" },
-        { "title": "Dolor sit amet", "genre": "Non-fiction", "book_score": "50" },
-        { "title": "Nunc sollicitudin commodo ipsum. Suspendisse non", "genre": "Drama", "book_score": "50" },
-        { "title": "Nulla eu neque", "genre": "Tragedy", "book_score": "50" },
-        { "title": "Montes, Nascetur Ridiculus Mus. Donec", "genre": "Horror", "book_score": "49" },
-        { "title": "Sem ut Dolor Dapibus Gravida", "genre": "Tragedy", "book_score": "50" },
-        { "title": "Phasellus elit pede, malesuada vel, venenatis vel", "genre": "Comedy", "book_score": "55" },
-        { "title": "Tortor: Integer Aliquam Adipiscing Lacus. Ut nec", "genre": "Satire", "book_score": "44" },
-        { "title": "Harry Potter and the Chamber of Secrets", "genre": "Fiction", "book_score": "75", cover_url: "https://images-na.ssl-images-amazon.com/images/I/51jNORv6nQL.jpg" }
+        { "title": "The Hobbit", "genre": "Fiction", "book_score": "80", cover_url:"https://cdn.pastemagazine.com/www/system/images/photo_albums/hobbit-book-covers/large/photo_5653_0-8.jpg?1384968217" },
+        { "title": "The Fellowship of the Ring", "genre": "fiction","book_score": "80", cover_url: "http://www.councilofelrond.com/wp-content/uploads/modules/My_eGallery/gallery/covers/books/NenyaGoldFotRBookCoverCoE.jpg"},
+        { "title": "Harry Potter and the Sorcer Stone", "genre": "fiction", "book_score": "80", cover_url: "https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr06/2013/7/30/18/grid-cell-14969-1375222023-8.jpg"},
+        { "title": "Harry Potter and the Chamber of Secrets", "genre": "fiction","book_score": "80", cover_url: "https://dolmv3q9e9skh.cloudfront.net/productImage/?sku=lens-harry_potter_and_the_chamber_of_secrets&w=150"},
+        { "title": "Harry Potter and Prisoner of Azkaban", "genre": "fiction", "book_score": "80", cover_url: "https://upload.wikimedia.org/wikipedia/en/b/b4/Harry_Potter_and_the_Prisoner_of_Azkaban_(US_cover).jpg"},
+        { "title": "Harry Potter and the Goblet of Fire", "genre": "fiction", "book_score": "80", cover_url: "https://i.infopls.com/images/HPusa4_TV.jpg"},
+        { "title": "Harry Potter and the Order of the Phoenix", "genre": "fiction", "book_score": "80", cover_url: "http://harrypotterfanzone.com/wp-content/2009/06/ootp-us-jacket-art.jpg"},
+        { "title": "Harry Potter and the Half Blood Prince", "genre": "fiction", "book_score": "80", cover_url: "http://vignette3.wikia.nocookie.net/harrypotter/images/c/c6/Harry_potter_HBP_Scholastic_edition.jpg/revision/latest?cb=20051228060531"},
+        { "title": "Harry Potter and the Deathly Hallows", "genre": "fiction", "book_score": "80", cover_url: "http://harrypotterfanzone.com/wp-content/2009/06/dh-us-jacket-art.jpg"},
+        { "title": "Of Mice and Men", "genre": "fiction", "book_score": "80", cover_url: "https://images-na.ssl-images-amazon.com/images/I/51wuHv30-ML._SY344_BO1,204,203,200_.jpg"},
+        { "title": "Hitchhiker's Guide to the Galaxy", "genre": "fiction", "book_score": "70", cover_url: "http://www.thealmightyguru.com/Reviews/Hitchhiker/Images/HHGG-Ultimate-Soft.jpg" },
+        { "title": "A felis ullamcorper viverra Maecenas", "genre": "Non-fiction", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Nullam lobortis quam", "genre": "Realistic fiction", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Mauris quis turpis Vitae Purus Gravida", "genre": "Realistic fiction", "book_score": "49",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "laoreet ipsum. Curabitur consequat", "genre": "Drama", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Molestie in, Tempus eu, Ligula", "genre": "Realistic fiction", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Nulla vulputate Dui, Nec Tempus", "genre": "Drama", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Sit amet Ultricies Sem Magna", "genre": "Tragedy", "book_score": "49",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Augue eu Tellus", "genre": "Romance novel", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Praesent eu dui. Cum sociis", "genre": "Drama", "book_score": "39",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Velit. Pellentesque ultricies dignissim lacus. Aliquam", "genre": "Satire", "book_score": "49",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Commodo ipsum. Suspendisse non leo", "genre": "Romance novel", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Eu neque pellentesque massa lobortis ultrices", "genre": "Satire", "book_score": "51",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Lacus. Quisque purus sapien, gravida non", "genre": "Horror", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Dolor sit amet", "genre": "Non-fiction", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Nunc sollicitudin commodo ipsum. Suspendisse non", "genre": "Drama", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Nulla eu neque", "genre": "Tragedy", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Montes, Nascetur Ridiculus Mus. Donec", "genre": "Horror", "book_score": "49",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Sem ut Dolor Dapibus Gravida", "genre": "Tragedy", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Phasellus elit pede, malesuada vel, venenatis vel", "genre": "Comedy", "book_score": "55",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Tortor: Integer Aliquam Adipiscing Lacus. Ut nec", "genre": "Satire", "book_score": "44",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
     ]
 
 
@@ -354,13 +365,13 @@ db.sync({ force: true })
             { "type": "leatherbound", "price": 42.00, "quantity": 15, "num_pages": 364 }
         ]
         return Promise.all(
-            
+
             books.map(book => {
                 return bookTypes.map(bT => {
                     return BookType.create(bT)
-                    .then(_bT => {
-                        return _bT.setBook(book)
-                    })
+                        .then(_bT => {
+                            return _bT.setBook(book)
+                        })
                 })
             })
         )
@@ -400,14 +411,15 @@ db.sync({ force: true })
     })
     .then(function() {
         // Book.belongsToMany(Collection, {through: Book_Collection});
+        
         return Promise.all(books
             .filter((book, idx) => {
-                if (Math.random() > .5) return true
+                if (book.book_score > 50) return true
             })
             .map((book, idx) => {
                 if (book.title.split(' ').includes('Harry')) {
                     let potterCollection = collections.filter(col => col.name.split(' ').includes('Harry'))[0]
-                    return book.addCollection(potterCollection, { place_in_series: getRandom([1, 2, 3]) })
+                    return book.addCollection(potterCollection, { place_in_series: getRandom([1, 2, 3, 4, 5, 6, 7]) })
                 }
                 return book.addCollection(getRandom(collections), { place_in_series: getRandom([1, 2, 3]) })
             }))

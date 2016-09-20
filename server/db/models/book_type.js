@@ -6,7 +6,7 @@ var db = require('../_db');
 
 module.exports = db.define('book_type', {
     type: {
-        type: Sequelize.ENUM('ebook', 'paperback', 'hardcover', 'leatherbound'),
+        type: Sequelize.ENUM('ebook', 'paperback', 'hardcover', 'leatherbound'), // eslint-disable-line new-cap
         allowNull: true,
     },
     price: {

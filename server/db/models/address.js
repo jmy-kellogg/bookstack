@@ -19,7 +19,6 @@ module.exports = db.define('address', {
         type: Sequelize.STRING,
         allowNull: false,
         len: [2]
-        
     },
     zip: {
         type: Sequelize.INTEGER,
@@ -28,5 +27,3 @@ module.exports = db.define('address', {
         max: 99999
     }
 });
-
-

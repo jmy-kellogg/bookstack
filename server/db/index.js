@@ -19,7 +19,6 @@ var PaymentMethod = require('./models/payment_method');
 var User_Payment = require('./models/user_payment');
 
 
-
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
 

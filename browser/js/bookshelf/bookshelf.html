@@ -5,13 +5,12 @@
         <h2>{{ collection.name }}</h2>
         <!-- book animation end -->
         <div class="col-lg-4" ng-repeat="book in collection.books">
-        	<p id= "bookTitle">{{book.title}}</p>
             <div>
                 <figure class='book'>
                     <!-- Front -->
                     <ul class='hardcover_front'>
                         <li>
-                            <img src="http://s3.media.squarespace.com/production/456133/10392406/_mEwcz2PRQ6A/TN1k3eNPrTI/AAAAAAAABbo/lmXet8A4cwE/s1600/shakespeare.JPG" alt="" width="100%" height="100%">
+                            <img src="{{book.cover_url}}" alt="" width="100%" height="100%">
                         </li>
                         <li></li>
                     </ul>
@@ -19,7 +18,7 @@
                     <ul class='page'>
                         <li></li>
                         <li>
-                            <a class="btn-book" href="/book/{{book.id}}">Go to book</a>
+                            <a class="btn-book" href="/book/{{book.id}}">{{book.title}}</a>
                         </li>
                         <li></li>
                         <li></li>

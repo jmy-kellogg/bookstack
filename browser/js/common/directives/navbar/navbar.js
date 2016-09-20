@@ -1,25 +1,39 @@
-app.directive('navbar', function ($rootScope, $state) {
+app.directive('navbar', function($rootScope, AuthService, Session, AUTH_EVENTS, $state) {
 
     return {
         restrict: 'E',
-        scope: { searchBoxResult: '='},
+        scope: { searchBoxResult: '=' },
         templateUrl: 'js/common/directives/navbar/navbar.html',
-        link: function (scope) {
-
-            scope.items = [
-                { label: 'Home', state: 'home' },
-                { label: 'Cart', state: 'cart'},
-                { label: 'Bookshelf', state: 'bookshelf' },
-                { label: 'Checkout', state: 'checkout' },
-                { label: 'Search', state: 'search' }, 
-                { label: 'Sign Up', state: 'signup' },
-                { label: 'Log In', state: 'login' },
-                { label: 'Welcome', state: 'welcome' },
-                { label: 'Admin', state: 'admin' }
-            ];
+        link: function(scope) {
 
             scope.user = null;
 
+            scope.isLoggedIn = function() {
+                return AuthService.isAuthenticated();
+            };
+
+            scope.logout = function() {
+                AuthService.logout().then(function() {
+                    $state.go('search');
+                });
+            };
+
+            var setUser = function() {
+                AuthService.getLoggedInUser().then(function(user) {
+                    scope.user = user;
+                    // console.dir(user)
+                });
+            };
+
+            var removeUser = function() {
+                scope.user = null;
+            };
+
+            setUser();
+
+            $rootScope.$on(AUTH_EVENTS.loginSuccess, setUser);
+            $rootScope.$on(AUTH_EVENTS.logoutSuccess, removeUser);
+            $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
 
         }
 
