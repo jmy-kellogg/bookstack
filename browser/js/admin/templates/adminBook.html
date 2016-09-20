@@ -36,7 +36,7 @@
 			<label>Image url:</label>
 			<input type="text" name="" ng-model="author.picture_url">
 			<br>
-			<button ng-disabled="action!=='add'" ng-click="addAuthor()">Add author</button>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="addAuthor()">Add author</button>
 			<br>
 			<br>
 			<label class="admin-menu-title">Publisher:</label>
@@ -45,8 +45,8 @@
 			<input type="text" name="" ng-model="publisher.name">
 			<br>
 			<br>
-			<button ng-disabled="action!=='add'" ng-click="addBook()">Add book</button>
-			<button ng-disabled="action!=='add'" ng-click="resetForm()">Reset</button>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="addBook()">Add book</button>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="resetForm()">Reset</button>
 		</form>
 	</div>
 
@@ -59,8 +59,8 @@
 		<br>
 		<form ng-controller="EditBookCtrl" class="content-edit-form" name="editBookForm" novalidate>
 			<input autocomplete-recipient type="text" ng-model="selectedBook" uib-typeahead="bookOption as bookOption.title for bookOption in allBooks | filter:$viewValue | limitTo:8" placeholder="Select a book">
-			<button ng-disabled="action!=='edit'" ng-click="selectBook()">Select</button>
-			<button ng-disabled="action!=='edit'" ng-click="resetForm()">Reset</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="selectBook()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="resetForm()">Reset</button>
 			<br>
 			<br>
 			<label class="admin-menu-title">Book:</label>
@@ -74,7 +74,8 @@
 			<label>Cover image url:</label>
 			<input type="text" name="" ng-model="book.cover_url">
 			<br>
-			<button ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
 			<br>
 			<br>
 			<label class="admin-menu-title">Authors:</label>
@@ -83,13 +84,14 @@
 				<ul>
 					<li class="list-unstyled" ng-repeat="author in authors">
 						<span>{{formatName(author)}}</span>
-						<button ng-disabled="action!=='edit'" ng-click="removeAuthor(author.id)">Remove author</button>
+						<button class="admin-button" ng-disabled="action!=='edit'" ng-click="removeAuthor(author.id)">Remove author</button>
 					</li>
 				</ul>
 			</div>
 			<input autocomplete-recipient type="text" ng-model="selectedAuthor" uib-typeahead="authorOption as authorOption.fullName for authorOption in allAuthors | filter:$viewValue | limitTo:8" placeholder="Select an author to add">
 			<br>
-			<button ng-disabled="action!=='edit'" ng-click="addAuthor()">Add author</button>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="addAuthor()">Add author</button>
 			<br>
 			<p ng-show="invalidAuthor">Not a recognized author</p>
 			<p ng-show="needBookForAuth">You must select a book to edit</p>
@@ -106,7 +108,8 @@
 			</div>
 			<input type="text" ng-model="selectedPublisher" uib-typeahead="publisherOption as publisherOption.name for publisherOption in allPublishers | filter:$viewValue | limitTo:8" placeholder="Select a publisher">
 			<br>
-			<button ng-disabled="action!=='edit'" ng-click="changePublisher()">Change publisher</button>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="changePublisher()">Change publisher</button>
 			<br>
 			<p ng-show="invalidPublisher">Not a recognized publisher</p>
 			<p ng-show="needBookForPub">You must select a book to edit</p>
@@ -123,13 +126,13 @@
 		<br>
 		<form ng-controller="DeleteBookCtrl" class="content-edit-form" name="deleteBookForm" novalidate>
 			<input type="text" ng-model="selectedBook" uib-typeahead="bookOption as bookOption.title for bookOption in allBooks | filter:$viewValue | limitTo:8" placeholder="Select a book">
-			<button ng-disabled="action!=='delete'" ng-click="selectBook()">Select</button>
-			<button ng-disabled="action!=='delete'" ng-click="resetForm()">Reset</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="selectBook()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="resetForm()">Reset</button>
 			<br>
 			<br>
 			<p>(Book card for {{book.title}})</p>
 			<br>
-			<button ng-disabled="action!=='delete'" ng-click="deleteBook()">Delete book</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="deleteBook()">Delete book</button>
 		</form>
 	</div>
 </div>

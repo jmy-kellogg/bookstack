@@ -13,8 +13,8 @@
 			<input type="text" name="" ng-model="addPublisher.name">
 			<br>
 			<br>
-			<button ng-disabled="action!=='add'" ng-click="add()">Add publisher</button>
-			<button ng-disabled="action!=='add'" ng-click="clearAdd()">Clear</button>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="add()">Add publisher</button>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="clearAdd()">Clear</button>
 			<br>
 		</form>
 	</div>
@@ -28,8 +28,8 @@
 		<br>
 		<form class="content-edit-form" name="editPublisherForm" novalidate>
 			<input type="text" ng-model="selectedPublisherEdit" uib-typeahead="publisherOption as publisherOption.name for publisherOption in allPublishers | filter:$viewValue | limitTo:8" placeholder="Select a publisher">
-			<button ng-disabled="action!=='edit'" ng-click="selectPublisherEdit()">Select</button>
-			<button ng-disabled="action!=='edit'" ng-click="resetEditForm()">Reset</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="selectPublisherEdit()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="resetEditForm()">Reset</button>
 			<br>
 			<br>
 			<label class="admin-menu-title">Publisher info:</label>
@@ -39,7 +39,7 @@
 			<input type="text" name="" ng-model="editPublisher.name">
 			<br>
 			<br>
-			<button ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
 			<br>
 			<p ng-show="needPublisherForEdit">You must select a publisher to edit</p>
 		</form>
@@ -54,13 +54,13 @@
 		<br>
 		<form class="content-edit-form" name="deletePublisherForm" novalidate>
 			<input type="text" ng-model="selectedPublisherDelete" uib-typeahead="publisherOption as publisherOption.name for publisherOption in allPublishers | filter:$viewValue | limitTo:8" placeholder="Select a publisher">
-			<button ng-disabled="action!=='delete'" ng-click="selectPublisherDelete()">Select</button>
-			<button ng-disabled="action!=='delete'" ng-click="resetDeleteForm()">Reset</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="selectPublisherDelete()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="resetDeleteForm()">Reset</button>
 			<br>
 			<br>
 			<p>(Publisher card for {{deletePublisher.name}})</p>
 			<br>
-			<button ng-disabled="action!=='delete'" ng-click="delete()">Delete publisher</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="delete()">Delete publisher</button>
 		</form>
 	</div>
 </div>
