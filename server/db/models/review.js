@@ -6,7 +6,7 @@ var db = require('../_db');
 
 module.exports = db.define('review', {
     stars: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
         validate: {
             min: 1,
             max: 5
