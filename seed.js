@@ -189,11 +189,11 @@ var seedBookTypes = function() {
 var seedCollections = function() {
 
     var collections = [
-        { "name": "Best Sellers - The New York Times", "total_books": 3 },
-        { "name": "Recommended", "total_books": 4 },
-        { "name": "Random Suggestions", "total_books": 3 },
-        { "name": "Good Reads", "total_books": 1 },
-        { "name": "Harry Potter Series", "total_books": 7 }
+        { "name": "Best Sellers - The New York Times"},
+        { "name": "Recommended"},
+        { "name": "Random Suggestions"},
+        { "name": "Good Reads"},
+        { "name": "Harry Potter Series"}
     ]
     return Promise.all(collections.map(function(collectionObj) {
         return Collection.create(collectionObj);
