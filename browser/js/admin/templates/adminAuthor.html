@@ -22,8 +22,9 @@
 			<label>Image url:</label>
 			<input type="text" name="" ng-model="addAuthor.picture_url">
 			<br>
-			<button ng-disabled="action!=='add'" ng-click="add()">Add author</button>
-			<button ng-disabled="action!=='add'" ng-click="clearAdd()">Clear</button>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="add()">Add author</button>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="clearAdd()">Clear</button>
 			<br>
 		</form>
 	</div>
@@ -37,8 +38,8 @@
 		<br>
 		<form class="content-edit-form" name="editAuthorForm" novalidate>
 			<input type="text" ng-model="selectedAuthorEdit" uib-typeahead="authorOption as authorOption.fullName for authorOption in allAuthors | filter:$viewValue | limitTo:8" placeholder="Select an author">
-			<button ng-disabled="action!=='edit'" ng-click="selectAuthorEdit()">Select</button>
-			<button ng-disabled="action!=='edit'" ng-click="resetEditForm()">Reset</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="selectAuthorEdit()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="resetEditForm()">Reset</button>
 			<br>
 			<br>
 			<label class="admin-menu-title">Author info:</label>
@@ -57,7 +58,8 @@
 			<label>Image url:</label>
 			<input type="text" name="" ng-model="editAuthor.picture_url">
 			<br>
-			<button ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
 			<br>
 			<p ng-show="needAuthorForEdit">You must select an author to edit</p>
 		</form>
@@ -72,13 +74,13 @@
 		<br>
 		<form class="content-edit-form" name="deleteAuthorForm" novalidate>
 			<input type="text" ng-model="selectedAuthorDelete" uib-typeahead="authorOption as authorOption.fullName for authorOption in allAuthors | filter:$viewValue | limitTo:8" placeholder="Select an author">
-			<button ng-disabled="action!=='delete'" ng-click="selectAuthorDelete()">Select</button>
-			<button ng-disabled="action!=='delete'" ng-click="resetDeleteForm()">Reset</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="selectAuthorDelete()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="resetDeleteForm()">Reset</button>
 			<br>
 			<br>
 			<p>(Author card for {{deleteAuthor.fullName}})</p>
 			<br>
-			<button ng-disabled="action!=='delete'" ng-click="delete()">Delete author</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="delete()">Delete author</button>
 		</form>
 	</div>
 </div>
