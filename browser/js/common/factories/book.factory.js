@@ -68,6 +68,12 @@ app.factory('BookFactory', function($http, $log, AuthorFactory, PublisherFactory
 			.catch($log);
 	};
 
+	bookObj.addReview = function(bookId, review){
+		return $http.post('/api/books/' + bookId + '/review', review)
+			.then(getData)
+			.catch($log);
+	};
+
 	bookObj.deleteBook = function(bookId){
 		return $http.delete('/api/books/' + bookId)
 			.then(getData)

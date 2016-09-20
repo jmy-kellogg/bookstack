@@ -1,10 +1,21 @@
-app.controller('BookCtrl', function($scope, BookFactory, CartFactory, $stateParams, cartItems) {
+app.controller('BookCtrl', function($rootScope, $scope, AuthService, BookFactory, CartFactory, $stateParams, cartItems) {
+	$scope.reviewToAdd = {};
+	$scope.reviewToAdd.stars = 1;
 
-    BookFactory.getOne($stateParams.bookId)
-    .then(book => {
-        $scope.book = book;
-        $scope.cover_url = $scope.book.cover_url || 'https://images-na.ssl-images-amazon.com/images/I/51d6mJO92yL._SX327_BO1,204,203,200_.jpg'
+	AuthService.getLoggedInUser().then(function(user) {
+        $scope.user = user;
     });
+
+    $scope.initialize = function(){
+	    BookFactory.getOne($stateParams.bookId)
+	    .then(book => {
+	        $scope.book = book;
+	        $scope.reviews = $scope.book.users;
+	        
+	        $scope.cover_url = $scope.book.cover_url || 'https://images-na.ssl-images-amazon.com/images/I/51d6mJO92yL._SX327_BO1,204,203,200_.jpg'
+	    });
+    };
+    $scope.initialize();
 
 	$scope.cartItems = cartItems;
 	if (cartItems.length) {
@@ -33,6 +44,21 @@ app.controller('BookCtrl', function($scope, BookFactory, CartFactory, $statePara
 		$scope.total = (parseFloat($scope.subTotal) + parseFloat($scope.tax)).toFixed(2);
 	}
 	$scope.calculate();
+
+	$scope.changeCommentStars = function(num) {
+		$scope.reviewToAdd.stars = num;
+	}
+
+	$scope.addReview = function() {
+		console.log($scope.book.id)
+		console.log($scope.reviewToAdd)
+		BookFactory.addReview($scope.book.id, $scope.reviewToAdd)
+		.then(function() {
+			$scope.reviewToAdd = {};
+			$scope.reviewToAdd.stars = 1;
+			$scope.initialize();
+		})
+	}
 
 });
 

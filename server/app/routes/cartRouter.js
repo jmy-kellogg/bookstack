@@ -12,9 +12,12 @@ router.use(function(req, res, next) {
 		User.findById(2)
 		.then(function(user) {
 			req.user = user;
+			next()
 		})
+		.catch(next)
+	} else {
+		next();
 	}
-	next()
 })
 
 router.get('/', function(req, res, next) {
@@ -43,11 +46,8 @@ router.post('/', function(req, res, next) {
 	// add item to current user's cart
 
 	var bookItem = req.body;
-	console.log(bookItem)
 	if (req.user) {
-		console.log('hello')
 		LineItem.create({userId: req.user.id, bookTypeId: bookItem.id, status: 'cart', quantity: 1, unit_price: bookItem.price})
-		//req.user.addBook_type(bookItem, {status: 'cart', quantity: 1, unit_price: bookItem.price})
 		.then(function(data) {
 			res.json(data);
 		})
@@ -72,7 +72,6 @@ router.put('/', function(req, res, next) {
 
 	var invoice = req.body.invoice;
 	var cartItems = req.body.cartItems;
-	console.log(cartItems)
 
 	LineItem.findAll({
 		where: {

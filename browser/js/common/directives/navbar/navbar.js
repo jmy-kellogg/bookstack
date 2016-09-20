@@ -21,7 +21,6 @@ app.directive('navbar', function($rootScope, AuthService, Session, AUTH_EVENTS, 
             var setUser = function() {
                 AuthService.getLoggedInUser().then(function(user) {
                     scope.user = user;
-                    console.dir(user)
                 });
             };
 
