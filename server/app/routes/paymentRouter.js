@@ -10,7 +10,7 @@ router.post('/', function(req, res, next) {
 
 	var token = req.body.stripeToken;
 	var lastFour = req.body.lastFour;
-	var total = req.body.total;
+	var total = Math.round(req.body.total * 100);
 
 	// Create a charge: this will charge the user's card
 	var charge = stripe.charges.create({
@@ -21,6 +21,9 @@ router.post('/', function(req, res, next) {
 	}, function(err, charge) {
 	  if (err && err.type === 'StripeCardError') {
 	    // The card has been declined
+	    console.log('card declined!!!!!')
+	  } else {
+		console.log('success!!!!!!!!!!!!')
 	  }
 	});
 

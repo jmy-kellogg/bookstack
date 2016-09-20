@@ -9,7 +9,7 @@
     <div class="navbar-links">
         <ul class="nav navbar-nav">
             <li id="hello-user-name" ng-show="isLoggedIn()">
-                <span>Hello, {{ user.first_name}}!</span>
+                <span id="hello">Hello, {{ user.first_name}}!</span>
             </li>
             <li>
                 <a ui-sref-active="active" ui-sref="bookshelf">Bookshelf</a>
