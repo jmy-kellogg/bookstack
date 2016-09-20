@@ -1,17 +1,37 @@
 <nav id="navbar" class="navbar navbar-static-top">
     <div class="navbar-logo-name">
         <a ui-sref="search"><img class="navbar-logo" src="/logo.gif">
-        <span class="navbar-name">Bookstack</span></a>
+            <span class="navbar-name">Bookstack</span></a>
     </div>
     <div class="navbar-search">
         <search-box name="searchBoxResult"></search-box>
     </div>
     <div class="navbar-links">
         <ul class="nav navbar-nav">
-            <li ng-repeat="item in items">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+            <li id="hello-user-name" ng-show="isLoggedIn()">
+                <span>Hello, {{ user.first_name}}!</span>
             </li>
-            <li><a ui-sref="checkout"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;Cart</a></li>
+            <li>
+                <a ui-sref-active="active" ui-sref="bookshelf">Bookshelf</a>
+            </li>
+            <li>
+                <a ui-sref-active="active" ui-sref="search">Browse</a>
+            </li>
+            <li ng-hide="isLoggedIn()">
+                <a ui-sref-active="active" ui-sref="signup">Sign Up</a>
+            </li>
+            <li ng-hide="isLoggedIn()">
+                <a ui-sref-active="active" ui-sref="login">Log In</a>
+            </li>
+            <li ng-show="isLoggedIn()">
+                <a ui-sref-active="active" ng-click="logout()">Log Out</a>
+            </li>
+            <li ng-show="user.isAdmin">
+                <a ui-sref-active="active" ui-sref="admin">Admin</a>
+            </li>
+            <li>
+                <a ui-sref="checkout"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;Cart</a>
+            </li>
         </ul>
     </div>
 </nav>
