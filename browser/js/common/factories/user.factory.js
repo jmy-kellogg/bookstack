@@ -27,6 +27,11 @@ app.factory('UserFactory', function($http, $log) {
             return $http.delete('/api/users/' + userId)
                 .then(getData)
                 .catch($log)
+        },
+        addAddress: function(addressInfo, type) {
+            return $http.post('/api/users/address', {addressInfo, type})
+                .then(getData)
+                .catch($log);
         }
     }
 });

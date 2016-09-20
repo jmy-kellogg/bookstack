@@ -55,11 +55,11 @@ router.post('/', function(req, res, next) {
 	}
 });
 
-router.delete('/:booktype', function(req, res, next) {
+router.delete('/:booktypeId', function(req, res, next) {
 	// remove item from current user's cart
 
 	if (req.user) {
-		req.user.removeBook_type(req.body)
+		req.user.removeBook_type(req.params.booktypeId)
 		.then(function(data) {
 			res.json(data);
 		})
@@ -72,14 +72,22 @@ router.put('/', function(req, res, next) {
 
 	var invoice = req.body.invoice;
 	var cartItems = req.body.cartItems;
+	console.log(cartItems)
 
-	cartItems = cartItems.map(function(item){
-		item.invoiceId = invoice.id;
-		item.status = 'purchased';
-		return item.save();
+	LineItem.findAll({
+		where: {
+			userId: req.user.id,
+			status: 'cart'
+		}
 	})
-
-	Promise.all(cartItems)
+	.then(function(instances) {
+		instances = instances.map(function(instance) {
+			instance.invoiceId = invoice.id;
+			instance.status = 'purchased';
+			return instance.save();
+		})
+		return Promise.all(instances);
+	})
 	.then(function(data){
 		res.json(data);
 	})

@@ -27,3 +27,27 @@
 .float-right {
     float: right;
 }
+
+.subtotal-box {
+    border-top: 1px solid black;
+    padding-top: 5px;
+}
+
+.total-box {
+    border-top: 1px solid black;
+    padding-top: 5px;
+}
+
+.subtotal-box-dark {
+    border-top: 1px solid white;
+    padding-top: 5px;
+}
+
+.total-box-dark {
+    border-top: 1px solid white;
+    padding-top: 5px;
+}
+
+.enlarge {
+    font-size: 18px;
+}
