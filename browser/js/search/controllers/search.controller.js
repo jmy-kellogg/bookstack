@@ -32,7 +32,9 @@ app.controller('SearchCtl', function($scope, $stateParams, BookFactory){
 			});
 			$scope.books = filteredByGenre
 			}
-		})
+		});
+		
+
 	})
 
 

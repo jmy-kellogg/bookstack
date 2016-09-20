@@ -1,9 +1,9 @@
-<div ng-controller="FilterCtl">
-    <sidebar>
+
+    <sidebar ng-controller="FilterCtl">
         <form name="genre" id="filter">
             <h1>Genre</h1>
             <div class="checkbox">
-                <label><input type="checkbox" value="All" ng-model="getGenre.All" ng-click= "getGenreResult()">Show All</label>
+                <label><input type="checkbox" value="All" ng-model="getGenre.All" ng-click= "getGenreResult(true)">Show All</label>
             </div>
             <div class="checkbox">
                 <label><input type="checkbox" value="Fiction" ng-model="getGenre.Fiction" ng-click= "getGenreResult()">Fiction</label>
@@ -35,4 +35,4 @@
         </form>
        
     </sidebar>
-</div>
+

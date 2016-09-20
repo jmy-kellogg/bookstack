@@ -4,12 +4,13 @@ sidebar {
     backgroun-repeat: repeat;
     box-shadow: 0 0 5px 3px #d5ba5f;
     width: 250px;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     transition: 0.5s;
-    padding-top: 60px;
+    padding: 60px 50px;
+    height: 100vh;
 }
 
 #filter{
