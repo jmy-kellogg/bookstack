@@ -27,13 +27,12 @@ app.factory('CartFactory', function($http, $log){
 	cartObj.purchaseItemsFromCart = function(stripeToken, lastFour, comment){
 		var total = 0;
 		var cartItems;
-		cartObj.getItemsFromCart()
+		return cartObj.getItemsFromCart()
 			.then(function(_cartItems) {
 				cartItems = _cartItems;
-				cartItems.forEach(function(item){
-					total += (item.unit_price * 100) * item.quantity;
-				})
-				total = total * 1.08; // 8 percent tax
+				total = cartItems.reduce(function(curr, next){
+					return curr + next.line_item.quantity * parseFloat(next.line_item.unit_price);
+				}, 0) * 1.08
 				return;
 			})
 			.then(function() {
@@ -46,7 +45,10 @@ app.factory('CartFactory', function($http, $log){
 			})
 			.then(function(invoice) {
 				return $http.put('/api/cart', {cartItems, invoice})
-				.then(getData);
+				.then(getData)
+				.then(function(){
+					return invoice;
+				})
 			})
 
 

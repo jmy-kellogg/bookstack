@@ -3,6 +3,8 @@ app.controller('BookshelfCtrl', function($scope, CollectionFactory, BookFactory,
 	.then(function(collections){
 		$scope.collections = collections;
 	})
-
+	function star() {
+		console.log(star)
+	}
 });
 

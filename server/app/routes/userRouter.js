@@ -7,6 +7,7 @@ const db = require('../../db');
 const User = db.model('user');
 const Address = db.model('address');
 const PaymentMethod = db.model('payment_method');
+const UserAddress = db.model('user_address');
 
 router.get('/', function(req, res, next) {
     User.findAll({
@@ -44,6 +45,7 @@ router.put('/:userId', function(req, res, next) {
         .then(_user => res.json(_user))
         .catch(next)
 })
+
 router.delete('/:userId', function(req, res, next) {
     User.findOne({
             where: {
@@ -53,4 +55,26 @@ router.delete('/:userId', function(req, res, next) {
         .then(user => user.destroy())
         .then(() => res.sendStatus(204))
         .catch(next)
+})
+
+router.post('/address', function(req, res, next) {
+    Address.findOrCreate({where: req.body.addressInfo})
+    .spread(function(address, created) {
+        if (!created) {
+            return UserAddress.findOne({where: {
+                userId: req.user.id,
+                addressId: address.id,
+                type: req.body.type
+            }})
+            .then(function(instance) {
+                if (!instance) {
+                    return req.user.addAddress(address, {type: req.body.type});
+                }
+            })
+        }
+    })
+    .then(function(data) {
+        res.json(data);
+    })
+    .catch(next)
 })
