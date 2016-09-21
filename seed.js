@@ -238,11 +238,12 @@ var seedBooks = function() {
         { "title": "Harry Potter and the Deathly Hallows", "genre": "Fiction", "book_score": "80", cover_url: "http://harrypotterfanzone.com/wp-content/2009/06/dh-us-jacket-art.jpg"},
         { "title": "Of Mice and Men", "genre": "Fiction", "book_score": "80", cover_url: "https://images-na.ssl-images-amazon.com/images/I/51wuHv30-ML._SY344_BO1,204,203,200_.jpg"},
         { "title": "Hitchhiker's Guide to the Galaxy", "genre": "Fiction", "book_score": "70", cover_url: "http://www.thealmightyguru.com/Reviews/Hitchhiker/Images/HHGG-Ultimate-Soft.jpg" },
-        { "title": "A felis ullamcorper viverra Maecenas", "genre": "Non-fiction", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
-        { "title": "Nullam lobortis quam", "genre": "Realistic fiction", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "APPRENTICE IN DEATH", "genre": "Non-fiction", "book_score": "60",cover_url:"https://s1.nyt.com/du/books/images/9781101987971.jpg" },
+        { "title": "Girl on a Train", "genre": "Non-fiction", "book_score": "60",cover_url:"https://s1.nyt.com/du/books/images/9781594633669.jpg" },
         { "title": "Mauris quis turpis Vitae Purus Gravida", "genre": "Realistic fiction", "book_score": "49",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
         { "title": "laoreet ipsum. Curabitur consequat", "genre": "Drama", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
         { "title": "Molestie in, Tempus eu, Ligula", "genre": "Realistic fiction", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
+        { "title": "Nullam lobortis quam", "genre": "Realistic fiction", "book_score": "60",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
         { "title": "Nulla vulputate Dui, Nec Tempus", "genre": "Drama", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
         { "title": "Sit amet Ultricies Sem Magna", "genre": "Tragedy", "book_score": "49",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
         { "title": "Augue eu Tellus", "genre": "Romance novel", "book_score": "50",cover_url:"http://blog.hrc.utexas.edu/files/2012/12/poecover.jpg" },
@@ -311,6 +312,11 @@ var seedAddresses = function() {
 function getRandom(arr) {
     return arr[Math.floor(Math.random() * arr.length)]
 }
+let hpCounter = 0;
+function harrySeriesCounter(){
+    hpCounter++;
+    return hpCounter
+}
 
 
 let users, publishers, authors, books, addresses, paymentMethods,
@@ -356,7 +362,10 @@ db.sync({ force: true })
     .then(function(finBooks) {
         books = finBooks;
         // Book.belongsToMany(Author, {through: 'book_author'});
-        return Promise.all(books.map(book => book.addAuthor(authors[Math.floor(Math.random() * authors.length)])))
+        return Promise.all(books.map(function(book){
+            book.addAuthor(authors[Math.floor(Math.random() * authors.length)])
+        }))
+
     })
     .then(function() {
         var bookTypes = [
@@ -367,10 +376,10 @@ db.sync({ force: true })
         ]
         return Promise.all(
 
-            books.map(book => {
-                return bookTypes.map(bT => {
+            books.map(function(book){
+                return bookTypes.map(function(bT){
                     return BookType.create(bT)
-                        .then(_bT => {
+                        .then(function(_bT){
                             return _bT.setBook(book)
                         })
                 })
@@ -386,15 +395,17 @@ db.sync({ force: true })
         function getRandomType() {
             return ['billing', 'shipping'][Math.floor(Math.random() * 2)]
         }
-        return Promise.all(users.map(user => user.addAddress(getRandomAddress(), { type: getRandomType() })))
+        return Promise.all(users.map(function(user){user.addAddress(getRandomAddress(), { type: getRandomType() })
+        }))
     })
     .then(function() {
-
-        return Promise.all(users.map((user, idx) => user.addBook(getRandom(books), getRandom(reviews))))
+        return Promise.all(users.map(function(user, idx){user.addBook(getRandom(books), getRandom(reviews))
+        }))
     })
     .then(function() {
         // Book.belongsTo(Publisher);
-        return Promise.all(books.map(book => book.setPublisher(publishers[Math.floor(Math.random() * publishers.length)])))
+        return Promise.all(books.map(function(book){book.setPublisher(publishers[Math.floor(Math.random() * publishers.length)])
+        }))
     })
     .then(function() {
         // User.belongsToMany(Book_Type, {through: Line_Item});
@@ -405,7 +416,7 @@ db.sync({ force: true })
         function getRandomStatus() {
             return ['viewed', 'cart', 'purchased'][Math.floor(Math.random() * 3)]
         }
-        return Promise.all(users.map((user, idx) => {
+        return Promise.all(users.map(function(user, idx){
             user.addBook_type(getRandomBook_Type(), { status: getRandomStatus() })
         }))
 
@@ -414,15 +425,18 @@ db.sync({ force: true })
         // Book.belongsToMany(Collection, {through: Book_Collection});
         
         return Promise.all(books
-            .filter((book, idx) => {
+            .filter(function(book, idx){
                 if (book.book_score > 50) return true
             })
-            .map((book, idx) => {
+            .map(function(book, idx){
                 if (book.title.split(' ').includes('Harry')) {
-                    let potterCollection = collections.filter(col => col.name.split(' ').includes('Harry'))[0]
-                    return book.addCollection(potterCollection, { place_in_series: getRandom([1, 2, 3, 4, 5, 6, 7]) })
-                }
+                    let potterCollection = collections.filter(function(col){
+                        return col.name.split(' ')[0] === 'Harry';
+                    })[0]
+                    return book.addCollection(potterCollection, { place_in_series: harrySeriesCounter() })
+                } else {
                 return book.addCollection(getRandom(collections), { place_in_series: getRandom([1, 2, 3]) })
+                }
             }))
     })
     .then(function() {
@@ -435,14 +449,15 @@ db.sync({ force: true })
         function getRandomType() {
             return ['billing', 'shipping'][Math.floor(Math.random() * 2)]
         }
-        return Promise.all(users.map(user => user.addPayment_method(getRandomPayment())))
+        return Promise.all(users.map(function(user){user.addPayment_method(getRandomPayment())
+        }))
     })
     .then(function() {
         // Invoice.belongsTo(User_Payment);
         function getRandomUser() {
             return users[Math.floor(Math.random() * users.length)]
         }
-        return Promise.all(invoices.map(invoice => {
+        return Promise.all(invoices.map(function(invoice){
             return User_Payment.findOne({ where: { userId: getRandomUser().id } })
                 .then(function(user_payment_instance) {
                     return invoice.setUser_payment(user_payment_instance)
@@ -454,9 +469,11 @@ db.sync({ force: true })
         return Line_Item.findAll({ where: { status: 'purchased' } })
             .then(function(_line_items) {
                 line_items = _line_items
-                line_items.map(line_item => {
+                line_items.map(function(line_item){
                     var tempBookTypeId = line_item.bookTypeId;
-                    var unit_price = bookTypes.filter(bT => bT.id === tempBookTypeId)[0].price
+                    var unit_price = bookTypes.filter(function(bT) {
+                        return bT.id === tempBookTypeId;
+                    })[0].price
                     line_item.unit_price = unit_price;
                     line_item.quantity = 1;
                     return line_item.save()
@@ -467,7 +484,7 @@ db.sync({ force: true })
                 function getRandomInvoice() {
                     return invoices[Math.floor(Math.random() * invoices.length)]
                 }
-                let lineItemPromises = _line_items.map(line_item => {
+                let lineItemPromises = _line_items.map(function(line_item) {
                     return line_item.setInvoice(getRandomInvoice())
                 })
                 return Promise.all(lineItemPromises)
