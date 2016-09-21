@@ -1,0 +1,46 @@
+<div class="bookCard">
+
+        <div class="coverOnCard">
+            <div>
+                <figure class='book'>
+                    <!-- Front -->
+                    <ul class='hardcover_front'>
+                        <li>
+                            <img src="{{book.cover_url}}" alt="" width="100%" height="100%">
+                        </li>
+                        <li></li>
+                    </ul>
+                    <!-- Pages -->
+                    <ul class='page'>
+                        <li></li>
+                        <li>
+                            <a class="btn-book" href="/book/{{book.id}}">{{book.title}}</a>
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <!-- Back -->
+                    <ul class='hardcover_back'>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul class='book_spine'>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                </figure>
+            </div>
+        </div>
+    <h1><a href="book/{{book.id}}">{{ book.title }}</a></h1>
+    <h2>By: <a ng-repeat="author in book.authors" ui-sref="search({result: author.last_name })">{{ author.full_name }}</a></h2>
+    <p>Genre: {{book.genre}}</p>
+    <div ng-repeat="collection in book.collections">
+        <p><b><em>Book {{ collection.book_collection.place_in_series }} in {{ collection.name }}</em></b></p>
+    </div>
+    <!-- <h3><u>{{ book.publisher.name }}  </u></h3> -->
+    <div>
+        <li ng-repeat="bookType in book.book_types">{{ bookType.type}}: ${{bookType.price}}</li>
+    </div>
+</div>

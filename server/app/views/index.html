@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <base href="/" />
-    <title>Fullstack Academy Generated Application</title>
+    <title>Bookstack</title>
     <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -13,8 +13,14 @@
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+    <script src="angular-stripe-checkout/angular-stripe-checkout.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
+    <script type="text/javascript">
+      Stripe.setPublishableKey('pk_test_7iIcKLmw43frMoznCNOtblu0');
+    </script>
 </head>
 <body ng-app="BookstackApp">
     <ui-view><ui-view>

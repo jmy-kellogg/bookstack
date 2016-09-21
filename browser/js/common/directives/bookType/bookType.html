@@ -1,6 +1,4 @@
-    <a href="">
-<div class="book-type">
-        <span>{{ bookType.type }}</span>
-        <span>${{ bookType.price }}</span>
-</div>
-    </a>
+<label class="btn btn-outline-secondary btn-lg">
+        <input type="radio" name="inputWalls" id="inputWalls" value="{{ bookType.type }}">
+    {{ bookType.type}} | {{ bookType.price }} 
+</label>

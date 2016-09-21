@@ -1,0 +1,88 @@
+<div class="edit-block">
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="add">
+		</label>
+		<h3 class="inline">Add a collection</h3>
+		<br>
+		<form class="content-edit-form" name="addCollectionsForm" novalidate>
+			<label class="admin-menu-title">Collections info:</label>
+			<br>
+			<br>
+			<label>Name:</label>
+			<input type="text" name="" ng-model="addCollection.name">
+			<br>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="add()">Add collection</button>
+			<button class="admin-button" ng-disabled="action!=='add'" ng-click="clearAdd()">Clear</button>
+			<br>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="edit">
+		</label>
+		<h3 class="inline">Edit a collection</h3>
+		<br>
+		<form class="content-edit-form" name="editCollectionsForm" novalidate>
+			<input type="text" ng-model="selectedCollectionEdit" uib-typeahead="collectionOption as collectionOption.name for collectionOption in allCollections | filter:$viewValue | limitTo:8" placeholder="Select a collection">
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="selectCollectionEdit()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="resetEditForm()">Reset</button>
+			<br>
+			<br>
+			<label class="admin-menu-title">Collection info:</label>
+			<br>
+			<br>
+			<label>Name:</label>
+			<input type="text" name="" ng-model="editCollection.name">
+			<br>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="saveChanges()">Save changes</button>
+			<br>
+			<p ng-show="needCollectionForEdit">You must select a collection to edit</p>
+			<br>
+			<br>
+			<label class="admin-menu-title">Books in collection:</label>
+			<br>
+			<div>
+				<ol dnd-list="editCollection.books">
+					<li ng-repeat="book in editCollection.books" dnd-draggable="book" dnd-moved="editCollection.books.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = book" ng-class="{'selected': models.selected === book}">
+						<span>{{book.title}}</span>
+						<button class="admin-button" class="remove-button btn btn-danger btn-xs" ng-disabled="action!=='edit'" ng-click="removeBook(book.id)">x</button>
+					</li>
+				</ol>
+				<button class="admin-button" ng-disabled="action!=='edit'" ng-click="saveOrder()">Save order</button>
+			</div>
+			<br>
+			<input autocomplete-recipient type="text" ng-model="selectedBook" uib-typeahead="bookOption as bookOption.title for bookOption in allBooks | filter:$viewValue | limitTo:8" placeholder="Select a book to add">
+			<br>
+			<button class="admin-button" ng-disabled="action!=='edit'" ng-click="addBook()">Add book</button>
+			<br>
+			<p ng-show="invalidAuthor">Not a recognized book</p>
+			<p ng-show="needBookForAuth">You must select a collection to edit</p>
+			<br>
+			<br>
+		</form>
+	</div>
+
+
+	<div class="col-md-4 content-edit-div">
+		<label class="radio-inline">
+		  <input ng-model="action" class="radio-margin-fix" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="delete">
+		</label>
+		<h3 class="inline">Delete a collection</h3>
+		<br>
+		<form class="content-edit-form" name="deleteCollectionForm" novalidate>
+			<input type="text" ng-model="selectedCollectionDelete" uib-typeahead="collectionOption as collectionOption.name for collectionOption in allCollections | filter:$viewValue | limitTo:8" placeholder="Select a collection">
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="selectCollectionDelete()">Select</button>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="resetDeleteForm()">Reset</button>
+			<br>
+			<br>
+			<p>(Collection card for {{deleteCollection.name}})</p>
+			<br>
+			<button class="admin-button" ng-disabled="action!=='delete'" ng-click="delete()">Delete collection</button>
+		</form>
+	</div>
+</div>

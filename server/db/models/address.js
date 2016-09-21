@@ -18,14 +18,12 @@ module.exports = db.define('address', {
     state: {
         type: Sequelize.STRING,
         allowNull: false,
-        isAlpha: true, 
         len: [2]
     },
     zip: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        len: [4,5],
+        min: 1000,
+        max: 99999
     }
 });
-
-

@@ -6,13 +6,13 @@ var db = require('../_db');
 
 module.exports = db.define('book_type', {
     type: {
-        type: Sequelize.ENUM('ebook', 'paperback', 'hardcover', 'leatherbound'),
+        type: Sequelize.ENUM('ebook', 'paperback', 'hardcover', 'leatherbound'), // eslint-disable-line new-cap
         allowNull: true,
     },
     price: {
-        type: Sequelize.DECIMAL(10, 2),
-        allowNull: true,
-        min: 0
+        type: Sequelize.INTEGER,
+        // allowNull: true,
+        // min: 0
     },
     quantity: {
         type: Sequelize.INTEGER,
@@ -23,16 +23,15 @@ module.exports = db.define('book_type', {
         type: Sequelize.INTEGER,
         min: 0
     }
-},
-    {
+}, {
     getterMethods: {
-        price: function(){
-            return this.total / 100;
+        price: function() {
+            return (this.getDataValue('price') / 100).toFixed(2)
         }
     },
     setterMethods: {
-        price: function(value){
-            this.setDataValue('total', Math.round(value * 100));
+        price: function(value) {
+            this.setDataValue('price', Math.round(value * 100));
         }
     }
 });

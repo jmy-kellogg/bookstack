@@ -1,4 +1,113 @@
 <div>
 	<navbar></navbar>
-	<h1>This is the Checkout!</h1>
+	<div class="row">
+		<div class="col-md-8 checkout-form">
+			<h2>Checkout:</h2>
+
+			<form name="creditCardForm" id="payment-form">
+
+				<div class="checkout-form-box">
+					<h4>Billing address:</h4>
+					<label>
+				     	<span>Address Line 1: </span>
+				  	    <input type="text" size="40" ng-model="billing.address_line_one" required>
+					</label>
+					<br>
+					<label>
+				     	<span>Address Line 2: </span>
+				  	    <input type="text" size="40" ng-model="billing.address_line_two">
+					</label>
+					<br>
+					<label>
+				     	<span>City: </span>
+				  	    <input type="text" size="20" ng-model="billing.city" required>
+					</label>
+					<label>
+				     	<span>State: </span>
+				  	    <input type="text" size="5" ng-model="billing.state" required>
+					</label>
+					<label>
+				     	<span>Zip: </span>
+				  	    <input type="text" size="10" ng-model="billing.zip" required>
+					</label>
+					<br>
+					<br>
+					<h4>Shipping address:</h4>
+					<input type="checkbox" ng-model="sameAsBilling" name="sameAsBilling">
+					<span>Same as billing address</span>
+					<br>
+					<br>
+					<div ng-hide="sameAsBilling">
+						<label>
+					     	<span>Address Line 1: </span>
+					  	    <input type="text" size="40" ng-model="shipping.address_line_one">
+						</label>
+						<br>
+						<label>
+					     	<span>Address Line 2: </span>
+					  	    <input type="text" size="40" ng-model="shipping.address_line_two">
+						</label>
+						<br>
+						<label>
+					     	<span>City: </span>
+					  	    <input type="text" size="20" ng-model="shipping.city">
+						</label>
+						<label>
+					     	<span>State: </span>
+					  	    <input type="text" size="5" ng-model="shipping.state">
+						</label>
+						<label>
+					     	<span>Zip: </span>
+					  	    <input type="text" size="10" ng-model="shipping.zip">
+						</label>
+					</div>
+				</div>
+
+				<div class="checkout-form-box">
+					<h3>Credit card info:</h3>
+				  	<span class="payment-errors">{{errorMessage}}</span>
+
+				  	<div class="form-row">
+				    	<label>
+				     		<span>Card Number: </span>
+				  	    	<input type="text" size="20" data-stripe="number" ng-model="number" required>
+					    </label>
+					</div>
+
+					<div class="form-row">
+					    <label>
+					    	<span>Expiration (MM/YY): </span>
+					    	<br>
+				      		<input type="text" size="2" data-stripe="exp_month" ng-model="exp_month" required>
+				    	
+				    	<span> / </span>
+				    	<input type="text" size="2" data-stripe="exp_year" ng-model="exp_year" required>
+				    	</label>
+				  	</div>
+
+				  	<div class="form-row">
+				    	<label>
+					    	<span>CVC: </span>
+				    		<input type="text" size="4" data-stripe="cvc" ng-model="cvc" required>
+				    	</label>
+				  	</div>
+
+					<div class="form-row">
+				    	<label>
+				      		<span>Billing Zip: </span>
+				      		<input type="text" size="6" data-stripe="address_zip" ng-model="address_zip" required>
+				    	</label>
+				  	</div>
+				  	<br>
+				  	<button class="submit-style" ng-click="submit()" ng-disabled="clicked">Submit Payment</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-4">
+			<cart-sidebar total="total" sub-total="subTotal" tax="tax" cart="cartItems" show-checkout-btn="false"></cart-sidebar>
+		</div>
+	</div>
+
+	
+
 </div>

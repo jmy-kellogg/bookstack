@@ -1,8 +1,29 @@
+
 .bookCard{
+	background-color:rgba(7, 2, 0, 0.6);
+	color: #c0c0a9;
 	float: left;
 	width: 100%;
+	margin: 20px;
+	padding: 20px 10px;
+}
+.bookCard a{
+	color: #9CAE77;
+	/* text-shadow:
+    -1px -1px 0 #34340f,
+    1px -1px 0 #34340f,
+    -1px 1px 0 #34340f,
+    1px 1px 0 #34340f; */ 
+}
+
+.bookCard p{
+	font-size: .75em;
 }
 
 #searchResults{
 	padding-left: 250px;
+}
+
+#searchResults h2{
+	padding-left: 30px;
 }

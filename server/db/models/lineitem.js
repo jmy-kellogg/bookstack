@@ -6,7 +6,7 @@ var db = require('../_db');
 
 module.exports = db.define('line_item', {
     status: {
-        type: Sequelize.ENUM('viewed', 'cart', 'purchased', 'returned')
+        type: Sequelize.ENUM('viewed', 'cart', 'purchased', 'returned') // eslint-disable-line new-cap
     },
     unit_price: {
         type: Sequelize.INTEGER
@@ -15,14 +15,14 @@ module.exports = db.define('line_item', {
         type: Sequelize.INTEGER
     }
 }, {
-	getterMethods: {
-		unit_price: function(){
-			return this.unit_price / 100;
-		}
-	},
-	setterMethods: {
-		unit_price: function(value){
-			this.setDataValue('unit_price', Math.round(value * 100));
-		}
-	}
+    getterMethods: {
+        unit_price: function() {
+            return (this.getDataValue('unit_price') / 100).toFixed(2)
+        }
+    },
+    setterMethods: {
+        unit_price: function(value) {
+            this.setDataValue('unit_price', Math.round(value * 100));
+        }
+    }
 });

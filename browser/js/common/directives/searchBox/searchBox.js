@@ -1,15 +1,15 @@
-app.directive('searchBox', function ($state) {
+app.directive('searchBox', function () {
     return {
         restrict: 'E',
         scope: {
-        	name: '='
+            name: '='
         },
         templateUrl: 'js/common/directives/searchBox/searchBox.html',
-        controller: function($scope, BookFactory){
-        	BookFactory.getAll()
-        	.then(function(books){
-        		$scope.books = books
-        	})
-        }
+        // controller: function($scope, BookFactory){
+        // 	BookFactory.getAll()
+        // 	.then(function(books){
+        // 		$scope.books = books
+        // 	})
+        // }
     }
 });

@@ -19,20 +19,23 @@ var PaymentMethod = require('./models/payment_method');
 var User_Payment = require('./models/user_payment');
 
 
-
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
 
-User.belongsToMany(Address, {through: User_Address});
-User.belongsToMany(PaymentMethod, {through: User_Payment});
-User.belongsToMany(Book_Type, {through: Line_Item});
-User.belongsToMany(Book, {through: Review});
-Book.belongsToMany(Author, {through: 'book_author'});
-Book.belongsToMany(Collection, {through: Book_Collection});
+User.belongsToMany(Address, { through: User_Address });
+User.belongsToMany(PaymentMethod, { through: User_Payment });
+User.belongsToMany(Book_Type, { through: Line_Item });
+Book_Type.belongsToMany(User, { through: Line_Item });
+User.belongsToMany(Book, { through: Review });
+Book.belongsToMany(User, { through: Review });
+Book.belongsToMany(Author, { through: 'book_author' });
+Book.belongsToMany(Collection, { through: Book_Collection });
+Collection.belongsToMany(Book, { through: Book_Collection });
 Book.belongsTo(Publisher);
-Book.hasMany(Book_Type)
+Publisher.hasMany(Book);
 Book_Type.belongsTo(Book);
+Book.hasMany(Book_Type);
 Line_Item.belongsTo(Invoice);
-// Invoice.belongsTo(User);
-// Invoice.belongsTo(PaymentMethod);
+Invoice.hasMany(Line_Item);
 Invoice.belongsTo(User_Payment);
+User_Payment.hasMany(Invoice);

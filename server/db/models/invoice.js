@@ -13,15 +13,14 @@ module.exports = db.define('invoice', {
         type: Sequelize.TEXT
     }
     // using sequelize's created at field
-},
-{
+}, {
     getterMethods: {
-        total: function(){
-            return this.total / 100;
+        total: function() {
+            return (this.getDataValue('total') / 100).toFixed(2)
         }
     },
     setterMethods: {
-        total: function(value){
+        total: function(value) {
             this.setDataValue('total', Math.round(value * 100));
         }
     }
