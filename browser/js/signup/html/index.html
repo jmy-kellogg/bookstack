@@ -1,9 +1,9 @@
 <!--navbar included for now for easier navigation in this stage of production-->
 <navbar></navbar>
 
-<h1>Sign up!</h1>
+<h1 id="signUpHeader">Sign up!</h1>
 
-<form id="signup-form" name="signUpForm" ng-submit="signUpSubmit()">
+<form class= "signUpPage col-md-5" id="signup-form" name="signUpForm" ng-submit="signUpSubmit()">
 
     <uib-alert type="danger" ng-show="error">
         {{ error }}
@@ -31,4 +31,4 @@
     </div>
     <button type="submit" class="btn btn-default" ng-disabled="!validSignUp()">Submit</button>
 </form>
-<pre>{{ signup | json }}</pre>
+<!-- <pre>{{ signup | json }}</pre> -->
