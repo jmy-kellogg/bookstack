@@ -429,7 +429,7 @@ db.sync({ force: true })
                 if (book.book_score > 50) return true
             })
             .map(function(book, idx){
-                if (book.title.split(' ').indexOf('Harry') > -1) {
+                if ( book.title.split(...)[0] === 'Harry') {
                     let potterCollection = collections.filter(function(col){
                         return col.name.split(' ')[0] === 'Harry';
                     })[0]
