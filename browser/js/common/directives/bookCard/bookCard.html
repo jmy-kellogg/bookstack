@@ -37,7 +37,7 @@
     <h2>By: <a ng-repeat="author in book.authors" ui-sref="search({result: author.last_name })">{{ author.full_name }}</a></h2>
     <p>Genre: {{book.genre}}</p>
     <div ng-repeat="collection in book.collections">
-        <p><b><em>Book {{ collection.book_collection.place_in_series }} of {{ collection.total_books }} in {{ collection.name }}</em></b></p>
+        <p><b><em>Book {{ collection.book_collection.place_in_series }} in {{ collection.name }}</em></b></p>
     </div>
     <!-- <h3><u>{{ book.publisher.name }}  </u></h3> -->
     <div>
