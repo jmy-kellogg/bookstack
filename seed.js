@@ -430,9 +430,11 @@ db.sync({ force: true })
             })
             .map(function(book, idx){
                 if (book.title.split(' ').includes('Harry')) {
-                    let potterCollection = collections.filter(col => col.name.split(' ').includes('Harry'))[0]
+                    let potterCollection = collections.filter(function(col){
+                        return col.name.split(' ')[0] === 'Harry';
+                    })[0]
                     return book.addCollection(potterCollection, { place_in_series: harrySeriesCounter() })
-                }else{
+                } else {
                 return book.addCollection(getRandom(collections), { place_in_series: getRandom([1, 2, 3]) })
                 }
             }))
@@ -469,7 +471,9 @@ db.sync({ force: true })
                 line_items = _line_items
                 line_items.map(function(line_item){
                     var tempBookTypeId = line_item.bookTypeId;
-                    var unit_price = bookTypes.filter(bT => bT.id === tempBookTypeId)[0].price
+                    var unit_price = bookTypes.filter(function(bT) {
+                        return bT.id === tempBookTypeId;
+                    })[0].price
                     line_item.unit_price = unit_price;
                     line_item.quantity = 1;
                     return line_item.save()
